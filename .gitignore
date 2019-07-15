@@ -1,0 +1,7 @@
+*.log
+src/7s-local
+build
+package-lock.json
+.tmp
+node_modules
+.idea
