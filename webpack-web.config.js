@@ -47,19 +47,27 @@ var config = {
         },
     },
     module: {
-        loaders: [
-            { test: /\.(png|woff|woff2|eot|ttf|svg)$/, loader: 'url-loader?limit=100000' },
+        rules: [
+            {
+                test: /\.(png|woff|woff2|eot|ttf|svg)$/,
+                use: [
+                    {
+                        loader: 'file-loader',
+                        options: {},
+                    },
+                ],
+            },
             {
                 test: /\.scss|sass$/,
-                loaders: ['style-loader', sm('css-loader'), sm('sass-loader')]
+                use: ['style-loader', sm('css-loader'), sm('sass-loader')]
             },
             {
                 test: /\.css$/,
-                loaders: ['style-loader', sm('css-loader')]
+                use: ['style-loader', sm('css-loader')]
             },
             {
                 test: /\.yaml|yml$/,
-                loaders: ['json-loader', 'yaml-loader'],
+                use: ['json-loader', 'yaml-loader'],
             },
             {
                 test: /\.less$/,
@@ -94,6 +102,7 @@ var config = {
 };
 
 if (APP_ENV == 'production') {
+    config.mode = 'production'
     console.warn("Production build...")
     config.entry = [
         SRC_DIR + '/web/' + indexPath
@@ -115,6 +124,7 @@ if (APP_ENV == 'production') {
         new webpack.optimize.AggressiveMergingPlugin()
     ])
 } else {
+    config.mode = 'development'
     config.devtool = 'inline-source-maps'
     config.entry = [
         'webpack/hot/only-dev-server',
