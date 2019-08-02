@@ -1,151 +1,176 @@
-var CopyWebpackPlugin = require('copy-webpack-plugin');
-var webpack = require('webpack');
-var path = require('path');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+const webpack = require('webpack');
+const path = require('path');
 
-var BUILD_DIR = path.resolve(__dirname, 'build/web');
-var PUBLIC_DIR = path.resolve(BUILD_DIR, 'public');
-var SRC_DIR = path.resolve(__dirname, 'src');
-var APP_ENV = process.env.APP_ENV || 'production';
-var indexPath = 'index.jsx'
+const BUILD_DIR = path.resolve(__dirname, 'build/web');
+const PUBLIC_DIR = path.resolve(BUILD_DIR, 'public');
+const SRC_DIR = path.resolve(__dirname, 'src');
+const APP_ENV = process.env.APP_ENV || 'production';
+let indexPath = 'index.jsx';
 
 switch (APP_ENV) {
     case 'dev': indexPath = 'index_dev.jsx'; break;
-    case 'staging': indexPath = 'index_staging.jsx';break;
-    case 'test': indexPath = 'index_test.jsx';break;
-  }
-
-var sm = function(url){
-    if (APP_ENV != 'production')
-        return url+'?sourceMap'
-    return url
+    case 'staging': indexPath = 'index_staging.jsx'; break;
+    case 'test': indexPath = 'index_test.jsx'; break;
 }
 
-//we collect static files from various places
-var staticPaths = ['static/', '7s/src/static/']
-var copyPlugins = staticPaths.map(function(path){
-  return new CopyWebpackPlugin([{
-    from: path,
-    to: '../',
-    toType: 'dir',
-    flatten: false
-  }])
-})
+const withSourceMap = function (url) {
+    return (APP_ENV !== 'production') ? (
+        url+'?sourceMap'
+    ) : (
+        url
+    );
+};
 
-var config = {
-    target: 'web',
-    context: SRC_DIR,
+//we collect static files from various places
+const staticPaths = [
+    'static/',
+    '7s/src/static/'
+];
+const copyPlugins = staticPaths.map(function(path){
+    return new CopyWebpackPlugin([{
+        from: path,
+        to: '../',
+        toType: 'dir',
+        flatten: false,
+    }]);
+});
+
+let config = {
+    context: SRC_DIR, // absolute base path that contains all entry files
     resolve: {
         symlinks: false,
-        extensions: ['.js', '.jsx'],
+        extensions: [ // if an import has no file ending, they will be resolved in this order
+            '.tsx',
+            '.ts',
+            '.js',
+            '.jsx'
+        ],
         modules: [
             SRC_DIR,
-            "node_modules"
+            'node_modules',
         ],
-        alias: {
+        alias: { // You may use these aliases like packages in imports
             "7s": "7s/src",
-            "worf": "worf/src"
+            "worf": "worf/src",
         },
     },
     module: {
-        loaders: [
-            { test: /\.(png|woff|woff2|eot|ttf|svg)$/, loader: 'url-loader?limit=100000' },
+        rules: [
             {
-                test: /\.scss|sass$/,
-                loaders: ['style-loader', sm('css-loader'), sm('sass-loader')]
+                test: /\.(png|woff|woff2|eot|ttf|svg)$/,
+                use: [
+                    'file-loader',
+                ],
+            },
+            {
+                test: /\.(scss|sass)$/,
+                use: [
+                    'style-loader',
+                    withSourceMap('css-loader'),
+                    withSourceMap('sass-loader'),
+                ],
             },
             {
                 test: /\.css$/,
-                loaders: ['style-loader', sm('css-loader')]
+                use: [
+                    'style-loader',
+                    withSourceMap('css-loader'),
+                ],
             },
             {
                 test: /\.yaml|yml$/,
-                loaders: ['json-loader', 'yaml-loader'],
+                use: [
+                    'json-loader',
+                    'yaml-loader',
+                ],
             },
             {
                 test: /\.less$/,
-                use: [{
-                    loader: "style-loader" // creates style nodes from JS strings
-                }, {
-                    loader: "css-loader" // translates CSS into CommonJS
-                }, {
-                    loader: "less-loader" // compiles Less to CSS
-                }]
+                use: [
+                    'style-loader', // creates style nodes from JS strings
+                    'css-loader', // translates CSS into CommonJS
+                    'less-loader', // compiles Less to CSS
+                ],
             },
             {
-                test: /\.jsx?/,
+                test: /\.jsx?$/,
                 include: [SRC_DIR],
-                exclude: [path.resolve('node_modules')],
-                loader: 'babel-loader',
-                query: {
-                    presets: [["@babel/preset-env", { "modules": false }], '@babel/preset-react'],
-                    plugins: ['@babel/plugin-proposal-object-rest-spread']
-                }
-            }
-        ]
+                exclude: /node_modules/,
+                use: {
+                    loader: 'babel-loader',
+                    options: {
+                        presets: ['@babel/preset-env', '@babel/preset-react'],
+                        plugins: ['@babel/plugin-proposal-object-rest-spread']
+                    },
+                },
+            },
+            {
+                test: /\.tsx?$/,
+                include: [SRC_DIR],
+                exclude: /node_modules/,
+                use: [
+                    'babel-loader',
+                    'ts-loader',
+                ],
+            },
+        ],
     },
     output: {
         path: PUBLIC_DIR,
         filename: 'bundle.js',
-        publicPath: '/public'
+        publicPath: '/public',
     },
     plugins: [
         new webpack.NamedModulesPlugin(),
-    ]
+    ],
 };
 
-if (APP_ENV == 'production') {
-    console.warn("Production build...")
-    config.entry = [
-        SRC_DIR + '/web/' + indexPath
-    ]
-    config.plugins = config.plugins.concat(copyPlugins).concat([
-        new webpack.DefinePlugin({
-            'process.env.NODE_ENV': '"production"',
-            COMMIT_SHA: JSON.stringify(process.env.CI_COMMIT_SHA || process.env.COMMIT_SHA || 'unknown'),
-        }),
-        new webpack.optimize.OccurrenceOrderPlugin(),
-        new webpack.optimize.UglifyJsPlugin({
-            compress: {
-                warnings: false
-            },
-            comments: false,
-            minimize: true,
-            sourceMaps: false,
-        }),
-        new webpack.optimize.AggressiveMergingPlugin()
-    ])
+if (APP_ENV === 'production') {
+    console.warn('Production build...');
+    config = {
+        ...config,
+        mode: 'production',
+        entry: [
+            SRC_DIR + '/web/' + indexPath
+        ],
+    };
 } else {
-    config.devtool = 'inline-source-maps'
-    config.entry = [
-        'webpack/hot/only-dev-server',
-        SRC_DIR + '/web/' + indexPath
-    ]
-    config.devServer = {
-        hot: true,
-        // enable HMR on the server
-        contentBase: ['src/static', 'src/7s/static'],
-        // match the output path
+    config = {
+        ...config,
+        mode: 'development',
+        devtool: 'inline-source-maps',
+        entry: [
+            //'webpack/hot/only-dev-server',
+            SRC_DIR + '/web/' + indexPath,
+        ],
+        devServer: {
+            // enable HMR on the server
+            hot: true,
+            // match the output path
+            contentBase: ['src/static', 'src/7s/static'],
 
-        publicPath: '/public',
-        // match the output `publicPath`
-        historyApiFallback: true,
-        //always render index.html if the document does not exist (we need this for correct routing)
+            // match the output `publicPath`
+            publicPath: '/public',
+            //always render index.html if the document does not exist (we need this for correct routing)
+            historyApiFallback: true,
 
-        proxy: {
-            '/api': {
-                target: 'http://localhost:5000/',
-                secure: false
-            }
-        }
-    }
-    config.plugins = config.plugins.concat([
-        new webpack.HotModuleReplacementPlugin(),
-        new webpack.DefinePlugin({
-            'process.env.NODE_ENV': '"development"',
-            COMMIT_SHA: JSON.stringify(process.env.CI_COMMIT_SHA || process.env.COMMIT_SHA || 'unknown'),
-        }),
-
-    ])
+            proxy: {
+                '/api': {
+                    target: 'http://localhost:5000/',
+                    secure: false,
+                },
+            },
+        },
+        plugins: [
+            ...config.plugins,
+            new webpack.HotModuleReplacementPlugin(),
+            new webpack.DefinePlugin({
+                'process.env.NODE_ENV': '"development"',
+                COMMIT_SHA: JSON.stringify(process.env.CI_COMMIT_SHA || process.env.COMMIT_SHA || 'unknown'),
+            }),
+        ],
+    };
 }
 
 module.exports = config;
