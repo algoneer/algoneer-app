@@ -17,7 +17,7 @@ before_script:
 
 build_style_guide:
   script:
-  - npm run-script style-guide-build
+  - npm run-script styleguide-build
   artifacts:
     paths:
     - build/styleguide

@@ -10,8 +10,8 @@
     "analyze-web": "APP_ENV=production webpack --config webpack-web.config.js --json | webpack-bundle-size-analyzer",
     "make-assets": "webpack --config webpack-assets-production.config.js",
     "make-assets-dev": "webpack-dev-server --config webpack-assets.config.js",
-    "style-guide": "styleguidist server",
-    "style-guide-build": "styleguidist build",
+    "styleguide": "styleguidist server",
+    "styleguide-build": "styleguidist build",
     "test-web": "mocha-webpack -r jsdom-global/register --webpack-config webpack-web.config.js src/test/web/*.js"
   },
   "author": "",
