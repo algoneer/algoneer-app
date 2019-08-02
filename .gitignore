@@ -1,6 +1,6 @@
 *.log
-src/7s-local
-build
+/src/7s-local
+/build
 .tmp
 node_modules
 .idea
