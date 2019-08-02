@@ -12,7 +12,13 @@ import logo from './logo.svg';
 const Logo = () => {
     return (
         <a href='/'>
-            <img alt="Algoneer" src={logo} />
+            <img
+                alt="Algoneer"
+                src={logo}
+                style={{
+                    minWidth: '130px',
+                }}
+            />
         </a>
     );
 }
