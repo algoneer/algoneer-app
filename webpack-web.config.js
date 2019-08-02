@@ -44,7 +44,7 @@ let config = {
             '.tsx',
             '.ts',
             '.js',
-            '.jsx'
+            '.jsx',
         ],
         modules: [
             SRC_DIR,

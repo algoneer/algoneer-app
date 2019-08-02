@@ -1,6 +1,5 @@
 import React from 'react'
-import Nav from '7s/components/nav'
-import App from '7s/components/app'
+import App from '../apps/main/main.jsx'
 import Sidebar from '7s/components/sidebar'
 import CenteredCard from '7s/components/centered_card'
 import { withActions } from '7s/components/store'
