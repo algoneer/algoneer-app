@@ -55,7 +55,7 @@ class AlgoneerApp extends React.Component {
     }
 
     render(){
-        var { user } = this.props
+        const { user } = this.props
 
         if (user.status == 'verifying-login')
             return <LoginVerifyNotice />
