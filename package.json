@@ -3,6 +3,8 @@
   "version": "0.0.1",
   "description": "",
   "scripts": {
+    "lint": "eslint . --ext js,jsx --ignore-pattern node_modules/ --quiet",
+    "lint-fix": "eslint . --ext js,jsx --ignore-pattern node_modules/ --quiet --fix",
     "make-web-dev-test": "APP_ENV=test webpack-dev-server --config webpack-web.config.js --history-api-fallback",
     "make-web-dev": "APP_ENV=dev webpack-dev-server --config webpack-web.config.js --history-api-fallback",
     "make-web": "webpack --config webpack-web.config.js",
@@ -34,6 +36,8 @@
     "copy-webpack-plugin": "^5.0.4",
     "css-loader": "^3.1.0",
     "electron": "^1.6.18",
+    "eslint": "^6.1.0",
+    "eslint-plugin-react": "^7.14.3",
     "extract-text-webpack-plugin": "^3.0.2",
     "file-loader": "^4.1.0",
     "jsdom": "^11.1.0",
