@@ -1,3 +1,3 @@
-import Example from './example'
+import Example from './example';
 
-export default Example
+export default Example;

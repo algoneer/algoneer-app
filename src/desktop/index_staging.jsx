@@ -1,4 +1,4 @@
-import {render} from  './index_common'
-import settings from 'desktop/settings/prod'
+import {render} from  './index_common';
+import settings from 'desktop/settings/prod';
 
-render(settings)
+render(settings);

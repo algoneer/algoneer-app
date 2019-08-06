@@ -1,10 +1,11 @@
-import {render} from  './index_common'
-import settings from 'desktop/settings/dev'
+/* global module */
+import {render} from  './index_common';
+import settings from 'desktop/settings/dev';
 
-render(settings)
+render(settings);
 
 if (module.hot) {
-  module.hot.accept(() => {
-    render(settings)
-  })
+    module.hot.accept(() => {
+        render(settings);
+    });
 }
