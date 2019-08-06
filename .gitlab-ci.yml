@@ -15,6 +15,10 @@ before_script:
   - git submodule update
   - npm ci
 
+lint:
+  script:
+    - npm run-script lint
+
 build_style_guide:
   script:
   - npm run-script styleguide-build
