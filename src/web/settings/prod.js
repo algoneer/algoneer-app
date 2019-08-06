@@ -1,13 +1,13 @@
-import Settings from '7s/utils/settings'
+import Settings from '7s/utils/settings';
 
-import baseSettings from './_base'
-import genericSettings from 'settings/prod'
-import ssSettings from '7s/web/settings/prod'
+import baseSettings from './_base';
+import genericSettings from 'settings/prod';
+import ssSettings from '7s/web/settings/prod';
 
-const settings = new Settings()
+const settings = new Settings();
 
-settings.update(ssSettings)
-settings.update(genericSettings)
-settings.update(baseSettings)
+settings.update(ssSettings);
+settings.update(genericSettings);
+settings.update(baseSettings);
 
-export default settings
+export default settings;

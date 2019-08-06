@@ -30,4 +30,4 @@ class AlgoneerMain extends PureComponent {
     }
 }
 
-export default withRouter(withActions(AlgoneerMain, ['user', 'version']))
+export default withRouter(withActions(AlgoneerMain, ['user', 'version']));

@@ -1,2 +1,2 @@
 
-export default new Map([])
+export default new Map([]);

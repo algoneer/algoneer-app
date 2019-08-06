@@ -26,7 +26,7 @@ const withSourceMap = function (url) {
 //we collect static files from various places
 const staticPaths = [
     'static/',
-    '7s/src/static/'
+    '7s/src/static/',
 ];
 const copyPlugins = staticPaths.map(function(path){
     return new CopyWebpackPlugin([{
@@ -52,8 +52,8 @@ let config = {
             'node_modules',
         ],
         alias: { // You may use these aliases like packages in imports
-            "7s": "7s/src",
-            "worf": "worf/src",
+            '7s': '7s/src',
+            'worf': 'worf/src',
         },
     },
     module: {
@@ -102,7 +102,7 @@ let config = {
                     loader: 'babel-loader',
                     options: {
                         presets: ['@babel/preset-env', '@babel/preset-react'],
-                        plugins: ['@babel/plugin-proposal-object-rest-spread']
+                        plugins: ['@babel/plugin-proposal-object-rest-spread'],
                     },
                 },
             },
@@ -123,6 +123,7 @@ let config = {
         publicPath: '/public',
     },
     plugins: [
+        ...copyPlugins,
         new webpack.NamedModulesPlugin(),
     ],
 };
@@ -133,7 +134,7 @@ if (APP_ENV === 'production') {
         ...config,
         mode: 'production',
         entry: [
-            SRC_DIR + '/web/' + indexPath
+            SRC_DIR + `/web/${indexPath}`,
         ],
     };
 } else {

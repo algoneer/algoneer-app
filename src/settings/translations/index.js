@@ -1,5 +1,5 @@
-import en from './en.yml'
+import en from './en.yml';
 
 export default {
-    en
-}
+    en,
+};

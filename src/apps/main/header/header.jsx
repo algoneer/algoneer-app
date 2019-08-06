@@ -1,8 +1,4 @@
 import React, {PureComponent} from 'react';
-import Nav from '7s/components/nav';
-import App from '7s/components/app';
-import Sidebar from '7s/components/sidebar';
-import CenteredCard from '7s/components/centered_card';
 import { withActions } from '7s/components/store';
 import { withRouter } from '7s/components/router';
 
@@ -21,7 +17,7 @@ const Logo = () => {
             />
         </a>
     );
-}
+};
 
 const Search = () => {
     return (
@@ -29,7 +25,7 @@ const Search = () => {
             <input type="search" />
         </form>
     );
-}
+};
 
 const NewAlgorithmButton = () => {
     return (
@@ -45,7 +41,7 @@ const NewAlgorithmButton = () => {
             New Algo
         </button>
     );
-}
+};
 
 const NotificationBell = () => {
     return (
@@ -53,13 +49,13 @@ const NotificationBell = () => {
             🔔
         </a>
     );
-}
+};
 
 const UserDropdown = () => (
     <a href='/'>
         <img alt="Profile and settings menu" />
     </a>
-)
+);
 
 class Header extends PureComponent {
     render(){
