@@ -1,6 +1,6 @@
 [submodule "src/7s"]
 	path = src/7s
-	url = git@gitlab.com:7scientists/7s-ui.git
+	url = ../../7scientists/7s-ui.git
 [submodule "src/worf"]
 	path = src/worf
-	url = git@gitlab.com:7s-worf/react-ui.git
+	url = ../../7scientists/worf-ui.git
