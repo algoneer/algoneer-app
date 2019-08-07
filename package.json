@@ -18,15 +18,10 @@
   },
   "author": "",
   "license": "Proprietary",
-  "dependencies": {
-    "bulma": "^0.7.0",
-    "material-design-icons": "^3.0.1",
-    "node-sass": "^4.12.0",
-    "prop-types": "^15.5.10",
-    "react": "^16.2.0",
-    "react-dom": "^16.2.0"
-  },
   "devDependencies": {
+    "node-sass": "^4.12.0",
+    "@7scientists/7s": "file:src/7s",
+    "@7scientists/worf": "file:src/worf",
     "@babel/cli": "^7.2.0",
     "@babel/core": "^7.5.5",
     "@babel/plugin-proposal-object-rest-spread": "^7.2.0",

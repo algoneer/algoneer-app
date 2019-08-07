@@ -8,6 +8,12 @@ First, install the required node modules:
 
     npm install
 
+## Dependency Handling
+
+This project depends on the 7scientists UI toolkit as well as the Worf UI
+toolkit, which are both included as submodules. We require these two modules
+via NPM, which ensures that their dependencies are install recursively.
+
 ## Checkout out submodules (7s-ui)
 
 This project relies on our generic UI components library `7s-ui`, which is included
