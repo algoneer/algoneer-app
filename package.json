@@ -19,9 +19,12 @@
   "author": "",
   "license": "Proprietary",
   "devDependencies": {
-    "node-sass": "^4.12.0",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "bulma": "^0.7.0",
     "@7scientists/7s": "file:src/7s",
     "@7scientists/worf": "file:src/worf",
+    "node-sass": "^4.12.0",
     "@babel/cli": "^7.2.0",
     "@babel/core": "^7.5.5",
     "@babel/plugin-proposal-object-rest-spread": "^7.2.0",
