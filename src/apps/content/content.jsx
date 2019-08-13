@@ -1,9 +1,7 @@
 import React, {PureComponent} from 'react';
-import { withActions } from '7s/components/store';
-import { withRouter } from '7s/components/router';
 
 class Content extends PureComponent {
-    render(){
+    render() {
         return (
             <div>
                 <p>
@@ -70,4 +68,4 @@ Nullam nisl felis, hendrerit id massa vel, iaculis commodo ante. Donec et enim e
     }
 }
 
-export default withRouter(withActions(Content, ['user', 'version']));
+export default Content;

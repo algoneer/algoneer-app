@@ -28,25 +28,17 @@ module.exports = {
         },
     },
     "rules": {
-        "indent": [
-            "error",
-            4,
-            {
-                "SwitchCase": 1,
-            },
-        ],
-        "linebreak-style": [
-            "error",
-            "unix",
-        ],
-        "quotes": [
-            "error",
-            "single",
-        ],
-        "semi": [
-            "error",
-            "always",
-        ],
+        "eqeqeq": "error",
+        "indent": ["error", 4, {"SwitchCase": 1}],
+        "linebreak-style": ["error", "unix"],
+        "semi": ["error", "always"],
+        "quotes": ["error", "single"],
+        "no-confusing-arrow": "error",
+        "no-trailing-spaces": "error",
+        "no-var": "error",
+        "prefer-const": "error",
+        "yoda": "error",
+        "jsx-quotes": ["error", "prefer-double"],
         "react/jsx-uses-react": "error",
         "react/jsx-uses-vars": "error",
         "react/prop-types": "warn", // to become an error

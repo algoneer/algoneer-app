@@ -1,6 +1,6 @@
 import Example from 'components/example';
 
-let routes = new Map([
+const routes = new Map([
     [
         'example',
         {

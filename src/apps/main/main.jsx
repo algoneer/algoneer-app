@@ -1,7 +1,5 @@
 import React, {Fragment, PureComponent} from 'react';
 import Content from '../content/content.jsx';
-import { withActions } from '7s/components/store';
-import { withRouter } from '7s/components/router';
 
 import Header from './header/header.jsx';
 
@@ -30,4 +28,4 @@ class AlgoneerMain extends PureComponent {
     }
 }
 
-export default withRouter(withActions(AlgoneerMain, ['user', 'version']));
+export default AlgoneerMain;

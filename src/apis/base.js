@@ -41,10 +41,6 @@ export default class BaseApi {
             this.storage.setItem('access-token', value);
     }
 
-    get baseUrl(){
-        return this.settings.get(['apiUrl']);
-    }
-
     url(url){
         return this.baseUrl+'/'+this.version+url;
     }
@@ -67,10 +63,10 @@ export default class BaseApi {
         };
 
         return new Promise((resolve, reject) => {
-            var xhr = new XMLHttpRequest();
+            const xhr = new XMLHttpRequest();
             const params = urlEncode(opts.params);
             const url = getUrl(opts.url);
-            xhr.open(opts.method, url+(params != null ? '?'+params : ''));
+            xhr.open(opts.method, url+(params !== null ? '?'+params : ''));
 
             xhr.onload = () => {
                 const contentType = xhr.getResponseHeader('content-type').trim();
@@ -115,7 +111,7 @@ export default class BaseApi {
                 }
             };
 
-            if (this.settings.get('env') == 'development'){
+            if (this.settings.get('env') === 'development'){
                 // we slow down all API requests in dev mode, which makes it
                 // easier to develop consistent state handling and see glitches
                 setTimeout(cb, 1000);

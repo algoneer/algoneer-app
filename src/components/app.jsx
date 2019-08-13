@@ -1,5 +1,5 @@
 import React from 'react';
-import App from '../apps/main/main.jsx';
+import App from '7s/components/app';
 import CenteredCard from '7s/components/centered_card';
 import { withActions } from '7s/components/store';
 import { withRouter } from '7s/components/router';
@@ -25,20 +25,13 @@ class AlgoneerApp extends React.Component {
     constructor(props, context) {
         super(props, context);
         this.checkLogin();
-        this.checkVersion();
     }
 
     loginRequired() {
         const { route, user } = this.props;
         return !route.noUserRequired
-            && user.status != 'logged-in'
-            && user.status != 'verifying-login';
-    }
-
-    checkVersion() {
-        const { props } = this;
-        const { versionActions } = props;
-        versionActions.getVersion();
+            && user.status !== 'logged-in'
+            && user.status !== 'verifying-login';
     }
 
     checkLogin() {
@@ -55,7 +48,7 @@ class AlgoneerApp extends React.Component {
     render(){
         const { user } = this.props;
 
-        if (user.status == 'verifying-login')
+        if (user.status === 'verifying-login')
             return <LoginVerifyNotice />;
 
         if (this.loginRequired(this.props))
@@ -65,4 +58,4 @@ class AlgoneerApp extends React.Component {
     }
 }
 
-export default withRouter(withActions(AlgoneerApp, ['user', 'version']));
+export default withRouter(withActions(AlgoneerApp, ['user']));
