@@ -15,7 +15,7 @@ export const render = settings => {
                 <RouterProvider router={settings.get('router')}>
                     <App menu={settings.get('menu')} />
                 </RouterProvider>
-            </StoreProvider>         
+            </StoreProvider>
         </SettingsProvider>
         ,
         appElement

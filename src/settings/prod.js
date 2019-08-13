@@ -10,8 +10,4 @@ settings.update(baseSettings);
 settings.update(ssSettings);
 settings.update(worfSettings);
 
-settings.update(new Settings([
-    ['apiUrl', 'https://tie.dcso.de/api'],
-]));
-
 export default settings;

@@ -1,13 +1,11 @@
 import React, {PureComponent} from 'react';
-import { withActions } from '7s/components/store';
-import { withRouter } from '7s/components/router';
 
 import logo from './logo.svg';
 
 
 const Logo = () => {
     return (
-        <a href='/'>
+        <a href="/">
             <img
                 alt="Algoneer"
                 src={logo}
@@ -45,14 +43,14 @@ const NewAlgorithmButton = () => {
 
 const NotificationBell = () => {
     return (
-        <a href='/'>
+        <a href="/">
             🔔
         </a>
     );
 };
 
 const UserDropdown = () => (
-    <a href='/'>
+    <a href="/">
         <img alt="Profile and settings menu" />
     </a>
 );
@@ -85,4 +83,4 @@ class Header extends PureComponent {
     }
 }
 
-export default withRouter(withActions(Header, ['user', 'version']));
+export default Header;

@@ -1,1 +1,10 @@
-@import '~7s/scss/main.scss'
+@import '~7s/scss/main.scss';
+
+.simple {
+    background: #fff;
+    background: linear-gradient(-62.5deg, #E3F6FF 40%, #fff 40%);
+}
+
+.ss-card {
+    box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.25);
+}
