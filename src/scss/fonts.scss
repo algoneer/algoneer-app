@@ -1,0 +1,13 @@
+@font-face {
+  font-family: 'Public Sans';
+  font-style: normal;
+  font-weight: normal;
+  src:
+  url('public-sans/PublicSans-Regular.woff2') format('woff2'),
+  url('public-sans/PublicSans-Regular.woff') format('woff'),
+  url('public-sans/PublicSans-Regular.ttf') format('truetype');
+}
+
+body {
+  font-family: 'Public Sans';
+}

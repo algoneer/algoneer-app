@@ -1,5 +1,7 @@
 import React, {PureComponent} from 'react';
 
+import UserDropdown from './user-dropdown.jsx';
+
 import logo from './logo.svg';
 
 
@@ -20,14 +22,19 @@ const Logo = () => {
 const Search = () => {
     return (
         <form>
-            <input type="search" />
+            <input
+                type="search"
+                disabled
+                placeholder="Search"
+            />
         </form>
     );
 };
 
 const NewAlgorithmButton = () => {
     return (
-        <button
+        <a
+            href="/algorithms/new"
             style={{
                 background: '#4A83F4',
                 border: 'none',
@@ -37,7 +44,7 @@ const NewAlgorithmButton = () => {
             }}
         >
             New Algo
-        </button>
+        </a>
     );
 };
 
@@ -48,12 +55,6 @@ const NotificationBell = () => {
         </a>
     );
 };
-
-const UserDropdown = () => (
-    <a href="/">
-        <img alt="Profile and settings menu" />
-    </a>
-);
 
 class Header extends PureComponent {
     render(){
@@ -70,14 +71,28 @@ class Header extends PureComponent {
                 <span>
                     <Logo />
                 </span>
-                <span>
+                <span
+                    style={{
+                        gridColumn: 2,
+                    }}
+                >
                     <Search />
                 </span>
-                <span>
+                <span
+                    style={{
+                        gridColumn: 10,
+                    }}
+                >
                     <NewAlgorithmButton />
                 </span>
-                <NotificationBell />
-                <UserDropdown />
+                <span
+                    style={{
+                        gridColumn: 12,
+                    }}
+                >
+                    <NotificationBell />
+                    <UserDropdown />
+                </span>
             </div>
         );
     }

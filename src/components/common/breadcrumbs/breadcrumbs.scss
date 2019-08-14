@@ -1,0 +1,23 @@
+.breadcrumbs {
+    border-bottom: 2px solid #FBFBFB;
+    font-size: 14px;
+    font-weight: bold;
+    padding-bottom: 10px;
+
+    &__link {
+        padding-bottom: 12px;
+        color: #2B2828;
+        &:active, &:focus, &:hover {
+            color: #2B2828;
+        }
+
+        &--selected {
+            border-bottom: 2px solid #4A83F4;
+        }
+    }
+
+    &__link:not(:last-of-type)::after {
+        content: '>';
+        margin: 0 12px;
+    }
+}

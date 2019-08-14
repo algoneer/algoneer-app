@@ -1,5 +1,5 @@
 import React from 'react';
-import App from '7s/components/app';
+import App from '../apps/main/app';
 import CenteredCard from '7s/components/centered_card';
 import { withActions } from '7s/components/store';
 import { withRouter } from '7s/components/router';
