@@ -1,7 +1,25 @@
 account:
   heading: Welcome to Algoneer!
 nav:
-  example:
-    title: Example Title
-  login:
-    title: Login
+  personal:
+    title: Personal
+  organizational:
+    title: Organizations
+  my-algorithms:
+    title: My algorithms
+  shared-with-me:
+    title: Shared with me
+  create-algorithm:
+    title: Create algorithm
+algorithms:
+  terms:
+    owner: Algorithm owner
+    name: Algorithm name
+    description: Algorithm description
+    type: Algorithm type
+  creation:
+    submit: Create
+  empty:
+    no-algorithms: You have not created any algorithms yet.
+    create-first: Create your first algorithm.
+    image-alt: A man in the water is surrounded by boxes and displays of a test environment. His testing went overboard.

@@ -1,3 +1,3 @@
 ```jsx
-<SectionBox />
+<Empty />
 ```

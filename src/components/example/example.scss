@@ -1,0 +1,15 @@
+.dashboard-page {
+    &__section-heading {
+        font-weight: bold;
+        margin-bottom: 28px;
+    }
+    &__group-list {
+        display: flex;
+        flex-wrap: wrap;
+        align-content: flex-start;
+        gap: 28px;
+        &>li {
+            width: 152px;
+        }
+    }
+}

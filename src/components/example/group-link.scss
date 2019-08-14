@@ -1,0 +1,20 @@
+.group-link {
+    &__name {
+        font-size: 14px;
+        line-height: 20px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        margin-bottom: 12px;
+    }
+    &__count {
+        display: inline-block;
+        background: #113656;
+        border-radius: 10px;
+        color: #fff;
+        font-size: 11px;
+        min-width: 20px;
+        line-height: 20px;
+        text-align: center;
+    }
+}

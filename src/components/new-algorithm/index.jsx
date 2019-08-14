@@ -1,4 +1,5 @@
 import React, { PureComponent, Fragment } from 'react';
+import { T } from '7s/components';
 import Box from '../common/section-box/section-box.jsx';
 import Breadcrumbs from '../common/breadcrumbs/breadcrumbs.jsx';
 
@@ -13,30 +14,30 @@ class NewAlgorithmPage extends PureComponent {
                     ]}
                 />
                 <Box>
-                    <h1>Create algorithm</h1>
+                    <h1><T k="nav.create-algorithm.title" /></h1>
                     <form>
                         <p>
                             <label>
-                                Algorithm owner
+                                <T k="algorithms.terms.owner" />
                                 <select name="owner" disabled value="myself">
                                     <option value="myself">myself</option>
                                 </select>
                             </label>
                             <label>
-                                Algorithm name
+                                <T k="algorithms.terms.name" />
                                 <input name="name" type="text" required />
                             </label>
                         </p>
                         <p>
                             <label>
-                                Algorithm description (optional)
-                                <textarea type="text" />
+                                <T k="algorithms.terms.type" />
+                                <input type="text" required />
                             </label>
                         </p>
                         <p>
                             <label>
-                                Algorithm type
-                                <input type="text" required />
+                                <T k="algorithms.terms.description" /> (optional)
+                                <textarea type="text" />
                             </label>
                         </p>
                         <p>
