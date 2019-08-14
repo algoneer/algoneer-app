@@ -17,6 +17,14 @@ const routes = new Map([
             handler: () => ({ title: 'Algorithms', component: AlgorithmsPage }),
         },
     ],
+    // TODO: Next route got added for debugging only
+    [
+        'algorithms-empty',
+        {
+            url: '/algorithms/empty',
+            handler: () => ({ title: 'Algorithms', component: AlgorithmsPage, props: {empty: true }}),
+        },
+    ],
     [
         'new-algorithm',
         {

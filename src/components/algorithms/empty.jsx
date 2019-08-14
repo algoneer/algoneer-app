@@ -1,26 +1,38 @@
-import React, { Fragment, PureComponent } from 'react';
+import React, { PureComponent } from 'react';
+import { T } from '7s/components';
 
 import emptyImage from './empty-image.png';
 
-class Content extends PureComponent {
+class Empty extends PureComponent {
     render() {
         return (
-            <Fragment>
-                <p style={{ textAlign: 'center', fontWeight: 'bold' }}>
-                    You have not created any algorithms yet.
+            <div
+                style={{
+                    fontWeight: 'bold',
+                    lineHeight: 2,
+                    marginTop: '20vh',
+                    textAlign: 'center',
+                }}
+            >
+                <p >
+                    <T k="algorithms.empty.no-algorithms" />
                 </p>
-                <p style={{ textAlign: 'center', fontWeight: 'bold' }}>
-                    <a href="/algorithms/new">Create your first algorithm.</a>
+                <p>
+                    <a href="/algorithms/new"><T k="algorithms.empty.create-first" /></a>
                 </p>
-                <p style={{ textAlign: 'center', fontWeight: 'bold' }}>
+                <p>
                     <img
                         alt="A man in the water is surrounded by boxes and displays of a test environment. His testing went overboard."
                         src={emptyImage}
+                        style={{
+                            width: '629px',
+                            maxWidth: '100%',
+                        }}
                     />
                 </p>
-            </Fragment>
+            </div>
         );
     }
 }
 
-export default Content;
+export default Empty;
