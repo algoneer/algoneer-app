@@ -6,8 +6,8 @@ import worfSettings from 'worf/settings/test';
 
 const settings = new Settings();
 
-settings.update(baseSettings);
 settings.update(ssSettings);
 settings.update(worfSettings);
+settings.update(baseSettings);
 
 export default settings;

@@ -1,5 +1,4 @@
 import React, {Fragment, PureComponent} from 'react';
-import Content from '../content/content.jsx';
 
 import Header from './header/header.jsx';
 
@@ -21,7 +20,7 @@ class AlgoneerMain extends PureComponent {
                         margin: '0 8%',
                     }}
                 >
-                    <Content />
+                    {this.props.children}
                 </main>
             </Fragment>
         );
