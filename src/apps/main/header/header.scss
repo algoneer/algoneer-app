@@ -1,0 +1,28 @@
+.header {
+    background: #FBFBFB;
+    padding: 0 32px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+    height: 64px;
+
+    &__button-area{
+        background: #FBFBFB;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        align-items: center;
+        gap: 32px;
+    }
+
+    &__new-algo-button {
+        background: #4A83F4;
+        border: none;
+        border-radius: 10px;
+        color: white;
+        padding: 10px 18px;
+        white-space: nowrap;
+    }
+}

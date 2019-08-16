@@ -1,8 +1,10 @@
 import React, {PureComponent} from 'react';
 
 import UserDropdown from './user-dropdown.jsx';
+import NotificationBell from './notification-bell/notification-bell.jsx';
 
 import logo from './logo.svg';
+import './header.scss';
 
 
 const Logo = () => {
@@ -35,23 +37,9 @@ const NewAlgorithmButton = () => {
     return (
         <a
             href="/algorithms/new"
-            style={{
-                background: '#4A83F4',
-                border: 'none',
-                borderRadius: '10px',
-                color: 'white',
-                padding: '10px 18px',
-            }}
+            className="header__new-algo-button"
         >
             New Algo
-        </a>
-    );
-};
-
-const NotificationBell = () => {
-    return (
-        <a href="/">
-            🔔
         </a>
     );
 };
@@ -59,41 +47,24 @@ const NotificationBell = () => {
 class Header extends PureComponent {
     render(){
         return (
-            <div
-                style={{
-                    background: '#FBFBFB',
-                    display: 'grid',
-                    gridTemplateColumns: 'repeat(12, 1fr)',
-                    width: '100%',
-                    height: '100%',
-                }}
+            <nav
+                className="header"
+                role="banner"
             >
                 <span>
                     <Logo />
                 </span>
-                <span
-                    style={{
-                        gridColumn: 2,
-                    }}
-                >
+                <span>
                     <Search />
                 </span>
-                <span
-                    style={{
-                        gridColumn: 10,
-                    }}
-                >
+                <span>
                     <NewAlgorithmButton />
                 </span>
-                <span
-                    style={{
-                        gridColumn: 12,
-                    }}
-                >
-                    <NotificationBell />
+                <span className="header__button-area">
+                    <NotificationBell notificationCount={2} />
                     <UserDropdown />
                 </span>
-            </div>
+            </nav>
         );
     }
 }

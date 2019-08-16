@@ -36,8 +36,15 @@ const routes = new Map([
     [
         'algorithm-details',
         {
-            url: '/algorithms/1',
-            handler: () => ({ title: 'Algorithm Details', component: AlgorithmDetailsPage, props: { id: 1 } }),
+            url: '/algorithms/([0-9]+)',
+            handler: (id) => ({
+                title: 'Algorithm Details',
+                component: AlgorithmDetailsPage,
+                props: {
+                    // FIXME: catch errors
+                    id: Number.parseInt(id),
+                },
+            }),
         },
     ],
 ]);
