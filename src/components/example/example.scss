@@ -1,4 +1,7 @@
 .dashboard-page {
+    &__section {
+        margin: 32px 0;
+    }
     &__section-heading {
         font-weight: bold;
         margin-bottom: 28px;
