@@ -13,7 +13,7 @@ const GroupLink = ({ count, href, name }) => (
     </BoxLink>
 );
 
-BoxLink.propTypes = {
+GroupLink.propTypes = {
     count: PropTypes.number.isRequired,
     href: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
