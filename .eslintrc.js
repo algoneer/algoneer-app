@@ -32,7 +32,7 @@ module.exports = {
         "indent": ["error", 4, {"SwitchCase": 1}],
         "linebreak-style": ["error", "unix"],
         "semi": ["error", "always"],
-        "quotes": ["error", "single"],
+        "quotes": ["error", "single", { "allowTemplateLiterals": true }],
         "no-confusing-arrow": "error",
         "no-trailing-spaces": "error",
         "no-var": "error",

@@ -1,6 +1,7 @@
 import Example from 'components/example';
 import NewAlgorithmPage from 'components/new-algorithm';
 import AlgorithmsPage from 'components/algorithms';
+import AlgorithmDetailsPage from 'components/algorithm-details';
 
 const routes = new Map([
     [
@@ -30,6 +31,13 @@ const routes = new Map([
         {
             url: '/algorithms/new',
             handler: () => ({ title: 'New algorithm', component: NewAlgorithmPage }),
+        },
+    ],
+    [
+        'algorithm-details',
+        {
+            url: '/algorithms/1',
+            handler: () => ({ title: 'Algorithm Details', component: AlgorithmDetailsPage, props: { id: 1 } }),
         },
     ],
 ]);

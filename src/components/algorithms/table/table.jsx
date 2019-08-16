@@ -1,6 +1,23 @@
 import React, { PureComponent } from 'react';
+import { format } from 'date-fns';
 
-class Empty extends PureComponent {
+const dateFormat = 'MMM D, YYYY';
+
+const elements = [
+    {
+        path: '/hockey',
+        name: 'Ice Hockey vs. Field Hockey',
+        dateCreated: '2019-08-15T08:18:36Z',
+        status: 'passed',
+    }, {
+        path: '/dom',
+        name: 'Kölner Dom vs. Aachener Dom',
+        dateCreated: '2019-08-13T08:18:36Z',
+        status: 'passed',
+    },
+];
+
+class Table extends PureComponent {
     render() {
         return (
             <table>
@@ -13,22 +30,18 @@ class Empty extends PureComponent {
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>####</td>
-                        <td>Ice Hockey vs. Field Hockey</td>
-                        <td>Jul 13, 2019</td>
-                        <td>passed</td>
-                    </tr>
-                    <tr>
-                        <td>####</td>
-                        <td>Kölner Dom vs. Aachener Dom</td>
-                        <td>Jul 12, 2019</td>
-                        <td>failed</td>
-                    </tr>
+                    {elements.map((element) => (
+                        <tr key={element.path}>
+                            <td>{element.path}</td>
+                            <td>{element.name}</td>
+                            <td>{format(new Date(element.dateCreated), dateFormat)}</td>
+                            <td>{element.status}</td>
+                        </tr>
+                    ))}
                 </tbody>
             </table>
         );
     }
 }
 
-export default Empty;
+export default Table;
