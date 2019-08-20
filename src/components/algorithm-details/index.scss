@@ -1,0 +1,33 @@
+.react-tabs {
+    -webkit-tap-highlight-color: transparent;
+
+    &__tab {
+        background: #FBFBFB;
+        cursor: pointer;
+        display: inline-block;
+        width:  105px;
+        height: 38px;
+        line-height: 38px;
+        list-style: none;
+        text-align: center;
+
+        &--selected {
+            background: #113656;
+            color: white;
+        }
+
+        &--disabled {
+            color: #aaa;
+            cursor: default;
+        }
+    }
+
+    &__tab-panel {
+        display: none;
+        margin-top: 32px;
+
+        &--selected {
+            display: block;
+        }
+    }
+}
