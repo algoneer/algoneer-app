@@ -19,7 +19,8 @@ class AlgoneerMain extends PureComponent {
                 </header>
                 <div
                     style={{
-                        margin: '0 8%',
+                        width: '912px',
+                        margin: 'auto',
                     }}
                 >
                     <ErrorBoundary>
