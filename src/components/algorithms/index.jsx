@@ -1,8 +1,9 @@
 import React, { Fragment, PureComponent } from 'react';
+import PropTypes from 'prop-types';
 import Breadcrumbs from '../common/breadcrumbs/breadcrumbs.jsx';
 
 import Empty from './empty.jsx';
-import Table from './table/table.jsx';
+import AlgorithmsTable from './algorithms-table.jsx';
 
 class AlgorithmsPage extends PureComponent {
     render() {
@@ -17,11 +18,19 @@ class AlgorithmsPage extends PureComponent {
                 {this.props.empty ? ( // TODO: This got added for debugging only
                     <Empty />
                 ) : (
-                    <Table />
+                    <AlgorithmsTable />
                 )}
             </Fragment>
         );
     }
 }
+
+AlgorithmsPage.defaultProps = {
+    empty: false,
+};
+
+AlgorithmsPage.propTypes = {
+    empty: PropTypes.bool,
+};
 
 export default AlgorithmsPage;

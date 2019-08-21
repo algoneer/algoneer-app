@@ -1,12 +1,20 @@
 import React, { Fragment, PureComponent } from 'react';
 import PropTypes from 'prop-types';
+import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import Breadcrumbs from '../common/breadcrumbs/breadcrumbs.jsx';
 
-import Table from '../algorithms/table/table.jsx';
-
 import AlgorithmSummary from './algorithm-summary.jsx';
+import AlgorithmSettings from './settings/algorithm-settings.connect.jsx';
+import TestsTable from './tests-table.jsx';
+
+import './index.scss';
+
 
 class AlgorithmDetailsPage extends PureComponent {
+    renderTheCat(mouse) {
+        return <li mouse={mouse} />;
+    }
+
     render() {
         return (
             <Fragment>
@@ -23,7 +31,23 @@ class AlgorithmDetailsPage extends PureComponent {
                         description="Description Description Description Description Description Description Description Description Description Description Description Description"
                     />
                 </div>
-                <Table />
+                <Tabs className="algorithms-details-page__tabs">
+                    <TabList>
+                        <Tab>Results</Tab>
+                        <Tab>Settings</Tab>
+                        <Tab disabled>Access</Tab>
+                    </TabList>
+                    <TabPanel>
+                        <TestsTable />
+                    </TabPanel>
+                    <TabPanel>
+                        Construction site! Users are required to wear a helmet. 👷‍♀️
+                        <AlgorithmSettings />
+                    </TabPanel>
+                    <TabPanel>
+                        Construction site! Users are required to wear a helmet. 👷‍♀️
+                    </TabPanel>
+                </Tabs>
             </Fragment>
         );
     }

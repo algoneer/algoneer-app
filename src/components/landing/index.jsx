@@ -1,14 +1,14 @@
-import React, { PureComponent } from 'react';
+import React, { Component } from 'react';
 import { T } from '7s/components';
 import Box from '../common/section-box/section-box.jsx';
 import Breadcrumbs from '../common/breadcrumbs/breadcrumbs.jsx';
 
 import GroupLink from './group-link.jsx';
 
-import './example.scss';
+import './index.scss';
 
 
-class DashboardPage extends PureComponent {
+class LandingPage extends Component {
     render() {
         return (
             <div>
@@ -17,10 +17,10 @@ class DashboardPage extends PureComponent {
                         { name: 'Algoneer', url: '/', selected: true },
                     ]}
                 />
-                <div className="dashboard-page__section">
+                <div className="landing-page__section">
                     <Box primary>
-                        <h2 className="dashboard-page__section-heading"><T k="nav.personal.title" /></h2>
-                        <ul className="dashboard-page__group-list">
+                        <h2 className="landing-page__section-heading"><T k="nav.personal.title" /></h2>
+                        <ul className="landing-page__group-list">
                             <li>
                                 <GroupLink
                                     count={0}
@@ -39,10 +39,10 @@ class DashboardPage extends PureComponent {
                     </Box>
                 </div>
 
-                <div className="dashboard-page__section">
+                <div className="landing-page__section">
                     <Box>
-                        <h2 className="dashboard-page__section-heading"><T k="nav.organizational.title" /></h2>
-                        <ul className="dashboard-page__group-list">
+                        <h2 className="landing-page__section-heading"><T k="nav.organizational.title" /></h2>
+                        <ul className="landing-page__group-list">
                             <li>
                                 <GroupLink
                                     count={72}
@@ -65,4 +65,4 @@ class DashboardPage extends PureComponent {
     }
 }
 
-export default DashboardPage;
+export default LandingPage;

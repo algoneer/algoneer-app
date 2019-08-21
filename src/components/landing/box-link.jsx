@@ -1,13 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { A } from '7s/components';
 
 import './box-link.scss';
 
 
 const BoxLink = ({children, href}) => (
-    <a className="box-button" href={href}>
+    <A className="box-button" href={href}>
         {children}
-    </a>
+    </A>
 );
 
 BoxLink.propTypes = {

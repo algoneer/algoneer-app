@@ -1,14 +1,15 @@
-import Example from 'components/example';
+import LandingPage from 'components/landing';
 import NewAlgorithmPage from 'components/new-algorithm';
 import AlgorithmsPage from 'components/algorithms';
 import AlgorithmDetailsPage from 'components/algorithm-details';
+import UserSettingsPage from 'components/user-settings';
 
 const routes = new Map([
     [
         'root',
         {
             url: '/',
-            handler : () => ({title: '', component: Example}),
+            handler : () => ({title: '', component: LandingPage}),
         },
     ],
     [
@@ -45,6 +46,13 @@ const routes = new Map([
                     id: Number.parseInt(id),
                 },
             }),
+        },
+    ],
+    [
+        'settings',
+        {
+            url: '/settings',
+            handler: () => ({ title: 'User Settings', component: UserSettingsPage }),
         },
     ],
 ]);

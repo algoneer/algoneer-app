@@ -1,4 +1,5 @@
 import React, {PureComponent} from 'react';
+import { A } from '7s/components';
 
 import UserDropdown from './user-dropdown.jsx';
 import NotificationBell from './notification-bell/notification-bell.jsx';
@@ -35,12 +36,12 @@ const Search = () => {
 
 const NewAlgorithmButton = () => {
     return (
-        <a
+        <A
             href="/algorithms/new"
             className="header__new-algo-button"
         >
             New Algo
-        </a>
+        </A>
     );
 };
 

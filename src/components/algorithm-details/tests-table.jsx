@@ -1,22 +1,22 @@
 import React, { PureComponent } from 'react';
 import { format } from 'date-fns';
 
-import Chip from './chip.jsx';
+import Chip from '../algorithms/table/chip.jsx';
 
-import './table.scss';
+import './tests-table.scss';
 
 
 const dateFormat = 'MMM D, YYYY';
 
-const elements = [
+const tests = [
     {
-        path: '/hockey',
+        id: 1,
         name: 'Ice Hockey vs. Field Hockey',
         dateCreated: '2019-08-15T08:18:36Z',
         status: 'passed',
         url: '/algorithms/1',
     }, {
-        path: '/dom',
+        id: 2,
         name: 'Kölner Dom vs. Aachener Dom',
         dateCreated: '2019-08-13T08:18:36Z',
         status: 'passed',
@@ -24,31 +24,35 @@ const elements = [
     },
 ];
 
-class Table extends PureComponent {
+class TestsTable extends PureComponent {
     render() {
         return (
             <table className="table">
                 <thead>
                     <tr>
-                        <th>Path</th>
+                        <th>Id</th>
                         <th>Name</th>
                         <th>Date created</th>
                         <th>Status</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {elements.map((element) => (
-                        <tr key={element.path}>
+                    {tests.map((test) => (
+                        <tr key={test.id}>
                             <td>
-                                <a href={element.url}>
-                                    {element.path}
+                                <a href={test.url}>
+                                    {test.id}
                                 </a>
                             </td>
-                            <td>{element.name}</td>
-                            <td>{format(new Date(element.dateCreated), dateFormat)}</td>
+                            <td>
+                                <a href={test.url}>
+                                    {test.name}
+                                </a>
+                            </td>
+                            <td>{format(new Date(test.dateCreated), dateFormat)}</td>
                             <td>
                                 <Chip color="lightgreen">
-                                    {element.status}
+                                    {test.status}
                                 </Chip>
                             </td>
                         </tr>
@@ -59,4 +63,4 @@ class Table extends PureComponent {
     }
 }
 
-export default Table;
+export default TestsTable;
