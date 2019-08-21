@@ -1,6 +1,6 @@
 import React, { PureComponent, Fragment } from 'react';
 import { T } from '7s/components';
-import Box from '../common/section-box/section-box.jsx';
+import SectionBox from '../common/section-box/section-box.jsx';
 import Breadcrumbs from '../common/breadcrumbs/breadcrumbs.jsx';
 
 class NewAlgorithmPage extends PureComponent {
@@ -13,7 +13,7 @@ class NewAlgorithmPage extends PureComponent {
                         { name: 'Create algorithm', url: '/algorithms/new', selected: true },
                     ]}
                 />
-                <Box>
+                <SectionBox>
                     <h1><T k="nav.create-algorithm.title" /></h1>
                     <form>
                         <p>
@@ -48,7 +48,7 @@ class NewAlgorithmPage extends PureComponent {
                             </button>
                         </p>
                     </form>
-                </Box>
+                </SectionBox>
             </Fragment>
         );
     }
