@@ -11,11 +11,13 @@ const AlgorithmDetailsSettings = ({
     title,
     onDelete,
     onSave,
+    onUpdateDescription,
+    onUpdateTitle,
 }) => (
     <HoveringBox>
         <form>
-            <input value={title} />
-            <input value={description} />
+            <input value={title} onChange={onUpdateTitle} />
+            <input value={description} onChange={onUpdateDescription} />
             <button
                 type="submit"
                 onClick={onSave}
@@ -36,6 +38,8 @@ AlgorithmDetailsSettings.propTypes = {
     title: PropTypes.string.isRequired,
     onDelete: PropTypes.func.isRequired,
     onSave: PropTypes.func.isRequired,
+    onUpdateDescription: PropTypes.func.isRequired,
+    onUpdateTitle: PropTypes.func.isRequired,
 };
 
 export default AlgorithmDetailsSettings;

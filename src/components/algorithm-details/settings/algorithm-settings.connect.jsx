@@ -5,8 +5,10 @@ const connect = () => (
     <AlogrithmSettings
         title={'This is the title.'}
         description={'This is the description'}
-        onDelete={() => { }}
-        onSave={() => {}}
+        onDelete={() => {}}
+        onSave={() => { }}
+        onUpdateDescription={() => { }}
+        onUpdateTitle={() => { }}
     />
 );
 
