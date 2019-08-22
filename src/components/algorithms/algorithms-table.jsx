@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import { format } from 'date-fns';
-import { A } from '7s/components';
+import { A, T } from '7s/components';
 
 import Chip from './table/chip.jsx';
 
@@ -20,10 +20,27 @@ const elements = [
         id: 2,
         name: 'Kölner Dom vs. Aachener Dom',
         dateCreated: '2019-08-13T08:18:36Z',
-        status: 'passed',
+        status: 'failed',
         url: '/algorithms/2',
     },
 ];
+
+const StatusChip = ({status}) => {
+    if (status === 'passed') {
+        return (
+            <Chip color="lightgreen">
+                <T k="algorithms.statuses.passed" />
+            </Chip>
+        );
+    }
+    if (status === 'failed') {
+        return (
+            <Chip color="red">
+                <T k="algorithms.statuses.failed" />
+            </Chip>
+        );
+    }
+}
 
 class AlgorithmsTable extends PureComponent {
     render() {
@@ -52,9 +69,7 @@ class AlgorithmsTable extends PureComponent {
                             </td>
                             <td>{format(new Date(element.dateCreated), dateFormat)}</td>
                             <td>
-                                <Chip color="lightgreen">
-                                    {element.status}
-                                </Chip>
+                                <StatusChip status={element.status} />
                             </td>
                         </tr>
                     ))}
