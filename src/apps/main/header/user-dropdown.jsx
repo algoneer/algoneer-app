@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import classnames from 'classnames';
-import { withActions } from '7s/components';
+import { A, withActions } from '7s/components';
 
 import placeholder from './avatar-placeholder.png';
 import './user-dropdown.scss';
@@ -44,13 +44,13 @@ const UserDropdown = ({user}) => {
                 <hr />
                 <ul>
                     <li className="user-dropdown__dropdown-item">
-                        <a className="user-dropdown__dropdown-item-link" href="/settings">Settings</a>
+                        <A className="user-dropdown__dropdown-item-link" href="/settings">Settings</A>
                     </li>
                     <li className="user-dropdown__dropdown-item">
-                        <a className="user-dropdown__dropdown-item-link" href="/help">Help</a>
+                        <A className="user-dropdown__dropdown-item-link" href="/help">Help</A>
                     </li>
                     <li className="user-dropdown__dropdown-item">
-                        <a className="user-dropdown__dropdown-item-link" href="/logout">Sign out</a>
+                        <A className="user-dropdown__dropdown-item-link" href="/logout">Sign out</A>
                     </li>
                 </ul>
             </div>

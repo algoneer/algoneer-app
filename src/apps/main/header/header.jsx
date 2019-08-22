@@ -10,7 +10,7 @@ import './header.scss';
 
 const Logo = () => {
     return (
-        <a href="/">
+        <A href="/">
             <img
                 alt="Algoneer"
                 src={logo}
@@ -18,7 +18,7 @@ const Logo = () => {
                     minWidth: '130px',
                 }}
             />
-        </a>
+        </A>
     );
 };
 

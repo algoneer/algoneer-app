@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react';
 import { format } from 'date-fns';
+import { A } from '7s/components';
 
 import Chip from './table/chip.jsx';
 
@@ -40,14 +41,14 @@ class AlgorithmsTable extends PureComponent {
                     {elements.map((element) => (
                         <tr key={element.id}>
                             <td>
-                                <a href={element.url}>
+                                <A href={element.url}>
                                     {element.id}
-                                </a>
+                                </A>
                             </td>
                             <td>
-                                <a href={element.url}>
+                                <A href={element.url}>
                                     {element.name}
-                                </a>
+                                </A>
                             </td>
                             <td>{format(new Date(element.dateCreated), dateFormat)}</td>
                             <td>

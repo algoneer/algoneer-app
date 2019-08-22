@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import { T } from '7s/components';
+import { A, T } from '7s/components';
 
 import emptyImage from './empty-image.png';
 
@@ -18,7 +18,7 @@ class Empty extends PureComponent {
                     <T k="algorithms.empty.no-algorithms" />
                 </p>
                 <p>
-                    <a href="/algorithms/new"><T k="algorithms.empty.create-first" /></a>
+                    <A href="/algorithms/new"><T k="algorithms.empty.create-first" /></A>
                 </p>
                 <p>
                     <img
