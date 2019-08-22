@@ -10,9 +10,11 @@
         display: flex;
         flex-wrap: wrap;
         align-content: flex-start;
-        gap: 28px;
+        
         &>li {
             width: 152px;
+            //Replace with column-gap: 28px on parent, once browsers support it
+            margin-right: 28px;
         }
     }
 }
