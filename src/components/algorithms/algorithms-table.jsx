@@ -40,7 +40,7 @@ const StatusChip = ({status}) => {
             </Chip>
         );
     }
-}
+};
 
 class AlgorithmsTable extends PureComponent {
     render() {
