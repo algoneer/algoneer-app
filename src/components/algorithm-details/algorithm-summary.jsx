@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import HoveringBox from './hovering-box.jsx';
+import HoveringBox from '../common/hovering-box/hovering-box.jsx';
 
 import './algorithm-summary.scss';
 

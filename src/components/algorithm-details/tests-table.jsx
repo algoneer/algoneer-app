@@ -2,12 +2,12 @@ import React, { PureComponent } from 'react';
 import { format } from 'date-fns';
 import { A } from '7s/components';
 
-import Chip from '../algorithms/table/chip.jsx';
+import StatusChip from '../common/status-chip/status-chip.jsx';
 
 import './tests-table.scss';
 
 
-const dateFormat = 'MMM D, YYYY';
+const dateFormat = 'MMM d, yyyy';
 
 const tests = [
     {
@@ -52,9 +52,7 @@ class TestsTable extends PureComponent {
                             </td>
                             <td>{format(new Date(test.dateCreated), dateFormat)}</td>
                             <td>
-                                <Chip color="lightgreen">
-                                    {test.status}
-                                </Chip>
+                                <StatusChip status={test.status} />
                             </td>
                         </tr>
                     ))}

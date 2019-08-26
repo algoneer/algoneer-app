@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import HoveringBox from '../algorithm-details/hovering-box.jsx';
+import HoveringBox from '../common/hovering-box/hovering-box.jsx';
 import Breadcrumbs from '../common/breadcrumbs/breadcrumbs.jsx';
 
 import LabeledInput from './labeled-input.jsx';
