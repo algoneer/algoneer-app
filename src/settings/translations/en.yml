@@ -23,6 +23,7 @@ algorithms:
     no-algorithms: You have not created any algorithms yet.
     create-first: Create your first algorithm.
     image-alt: A man in the water is surrounded by boxes and displays of a test environment. His testing went overboard.
+generic:
   statuses:
     passed: passed
     failed: failed

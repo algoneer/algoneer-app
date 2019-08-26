@@ -1,13 +1,13 @@
 import React, { PureComponent } from 'react';
 import { format } from 'date-fns';
-import { A, T } from '7s/components';
+import { A } from '7s/components';
 
-import Chip from './table/chip.jsx';
+import StatusChip from '../common/status-chip/status-chip.jsx';
 
 import './algorithms-table.scss';
 
 
-const dateFormat = 'MMM D, YYYY';
+const dateFormat = 'MMM d, yyyy';
 
 const elements = [
     {
@@ -24,23 +24,6 @@ const elements = [
         url: '/algorithms/2',
     },
 ];
-
-const StatusChip = ({status}) => {
-    if (status === 'passed') {
-        return (
-            <Chip color="lightgreen">
-                <T k="algorithms.statuses.passed" />
-            </Chip>
-        );
-    }
-    if (status === 'failed') {
-        return (
-            <Chip color="red">
-                <T k="algorithms.statuses.failed" />
-            </Chip>
-        );
-    }
-};
 
 class AlgorithmsTable extends PureComponent {
     render() {
