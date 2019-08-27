@@ -8,6 +8,7 @@ import './breadcrumbs.scss';
 
 const Breadcrumbs = ({ links }) => (
     <nav
+        aria-label="breadcrumbs"
         className="breadcrumbs"
     >
         {links.map((link) => (

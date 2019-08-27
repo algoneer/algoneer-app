@@ -1,0 +1,12 @@
+.rounded-input {
+    border: 0.2px solid #CFCFCF;
+    border-radius: 5px;
+    font-size: 14px;
+    line-height: 38px;
+    padding: 0 12px;
+    box-shadow: inset 1.5px 1.5px 2px #DEDEDE;
+
+    &:disabled {
+        background-color: #FBFBFB;
+    }
+}

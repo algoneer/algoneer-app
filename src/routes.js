@@ -1,7 +1,7 @@
 import LandingPage from 'components/landing';
-import NewAlgorithmPage from 'components/new-algorithm';
-import AlgorithmsPage from 'components/algorithms';
-import AlgorithmDetailsPage from 'components/algorithm-details';
+import NewProjectPage from 'components/new-project';
+import ProjectsPage from 'components/projects';
+import ProjectDetailsPage from 'components/project-details';
 import UserSettingsPage from 'components/user-settings';
 
 const routes = new Map([
@@ -13,37 +13,28 @@ const routes = new Map([
         },
     ],
     [
-        'algorithms',
+        'projects',
         {
-            url: '/algorithms',
-            handler: () => ({ title: 'Algorithms', component: AlgorithmsPage }),
-        },
-    ],
-    // TODO: Next route got added for debugging only
-    [
-        'algorithms-empty',
-        {
-            url: '/algorithms/empty',
-            handler: () => ({ title: 'Algorithms', component: AlgorithmsPage, props: {empty: true }}),
+            url: '/projects',
+            handler: () => ({ title: 'Projects', component: ProjectsPage }),
         },
     ],
     [
-        'new-algorithm',
+        'new-project',
         {
-            url: '/algorithms/new',
-            handler: () => ({ title: 'New algorithm', component: NewAlgorithmPage }),
+            url: '/projects/new',
+            handler: () => ({ title: 'New project', component: NewProjectPage }),
         },
     ],
     [
-        'algorithm-details',
+        'project-details',
         {
-            url: '/algorithms/([0-9]+)',
+            url: '/projects/([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})',
             handler: (id) => ({
-                title: 'Algorithm Details',
-                component: AlgorithmDetailsPage,
+                title: 'Project Details',
+                component: ProjectDetailsPage,
                 props: {
-                    // FIXME: catch errors
-                    id: Number.parseInt(id),
+                    id,
                 },
             }),
         },

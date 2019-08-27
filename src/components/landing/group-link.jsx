@@ -9,7 +9,12 @@ import './group-link.scss';
 const GroupLink = ({ count, href, name }) => (
     <BoxLink href={href}>
         <div className="group-link__name">{name}</div>
-        <span className="group-link__count">{count}</span>
+        <span
+            aria-label={`contains ${count} ${count === 1 ? 'project' : 'projects'}`}
+            className="group-link__count"
+        >
+            {count}
+        </span>
     </BoxLink>
 );
 

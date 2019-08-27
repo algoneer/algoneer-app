@@ -3,6 +3,7 @@ import { A } from '7s/components';
 
 import UserDropdown from './user-dropdown.jsx';
 import NotificationBell from './notification-bell/notification-bell.jsx';
+import RoundedInput from '../../../components/common/rounded-input/rounded-input.jsx';
 
 import logo from './logo.svg';
 import './header.scss';
@@ -25,7 +26,7 @@ const Logo = () => {
 const Search = () => {
     return (
         <form>
-            <input
+            <RoundedInput
                 type="search"
                 disabled
                 placeholder="Search"
@@ -37,10 +38,10 @@ const Search = () => {
 const NewAlgorithmButton = () => {
     return (
         <A
-            href="/algorithms/new"
-            className="header__new-algo-button"
+            href="/projects/new"
+            className="header__new-project-button"
         >
-            New Algo
+            New project
         </A>
     );
 };
@@ -52,14 +53,16 @@ class Header extends PureComponent {
                 className="header"
                 role="banner"
             >
-                <span>
+                <span className="header__logo">
                     <Logo />
                 </span>
-                <span>
-                    <Search />
-                </span>
-                <span>
-                    <NewAlgorithmButton />
+                <span className="header__center">
+                    <span>
+                        <Search />
+                    </span>
+                    <span>
+                        <NewAlgorithmButton />
+                    </span>
                 </span>
                 <span className="header__button-area">
                     <NotificationBell notificationCount={2} />

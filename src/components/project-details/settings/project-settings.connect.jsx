@@ -1,8 +1,8 @@
 import React from 'react';
-import AlogrithmSettings from './algorithm-settings.jsx';
+import ProjectSettings from './project-settings.jsx';
 
 const connect = () => (
-    <AlogrithmSettings
+    <ProjectSettings
         title={'This is the title.'}
         description={'This is the description'}
         onDelete={() => {}}

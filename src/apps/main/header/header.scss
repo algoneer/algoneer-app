@@ -8,16 +8,35 @@
     align-items: center;
     height: 64px;
 
-    &__button-area{
+    &__logo {
+        width: 160px;
+        margin-right: 32px; // Replace with gap on parent once supported
+    }
+
+    &__center {
+        width: 912px;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: space-between;
+    }
+
+    &__button-area {
+        width: 160px;
+        margin-left: 32px; // Replace with gap on parent once supported
         background: #FBFBFB;
         display: flex;
         flex-direction: row;
         flex-wrap: nowrap;
+        justify-content: flex-end;
         align-items: center;
-        gap: 32px;
+        > *:not(:first-of-type) {
+            margin-left: 32px; // Replace with gap on parent once supported
+        }
     }
 
-    &__new-algo-button {
+    &__new-project-button {
+        display: inline-block;
         background: #4A83F4;
         border: none;
         border-radius: 10px;

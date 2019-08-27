@@ -11,7 +11,7 @@ settings.update(worfSettings);
 settings.update(baseSettings);
 
 settings.update(new Settings([
-    ['apiUrl', 'https://tie.dcso.de/api'],
+    ['algonautUrl', '//localhost:5001'],
 ]));
 
 

@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react';
 import HoveringBox from '../common/hovering-box/hovering-box.jsx';
 import Breadcrumbs from '../common/breadcrumbs/breadcrumbs.jsx';
 
-import LabeledInput from './labeled-input.jsx';
+import LabeledInput from '../common/labeled-input/labeled-input.jsx';
 
 import './index.scss';
 
