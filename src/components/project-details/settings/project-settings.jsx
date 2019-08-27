@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import HoveringBox from '../../common/hovering-box/hovering-box.jsx';
 
-//import './algorithm-settings.scss';
+//import './project-settings.scss';
 
 
 const AlgorithmDetailsSettings = ({

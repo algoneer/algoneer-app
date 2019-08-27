@@ -1,2 +1,5 @@
+import Projects from './projects';
 
-export default new Map([]);
+export default new Map([
+    ['projects', Projects],
+]);

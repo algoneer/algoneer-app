@@ -9,7 +9,7 @@
 <Breadcrumbs
     links={[
         { name: 'Algoneer', url: '/' },
-        { name: 'My algorithms', url: '/algorithms', selected: true },
+        { name: 'My projects', url: '/projects', selected: true },
     ]}
 />
 ```
@@ -17,8 +17,8 @@
 <Breadcrumbs
     links={[
         { name: 'Algoneer', url: '/' },
-        { name: 'My algorithms', url: '/algorithms' },
-        { name: 'Algorithm details', url: '/algorithms/1', selected: true },
+        { name: 'My projects', url: '/projects' },
+        { name: 'Project details', url: '/projects/1', selected: true },
     ]}
 />
 ```
@@ -26,9 +26,9 @@
 <Breadcrumbs
     links={[
         { name: 'Algoneer', url: '/' },
-        { name: 'My algorithms', url: '/algorithms' },
-        { name: 'Algorithm details', url: '/algorithms/1' },
-        { name: 'Test results', url: '/algorithms/1/results', selected: true },
+        { name: 'My projects', url: '/projects' },
+        { name: 'Project details', url: '/projects/1' },
+        { name: 'Test results', url: '/projects/1/results', selected: true },
     ]}
 />
 ```

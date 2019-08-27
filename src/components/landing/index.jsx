@@ -24,14 +24,14 @@ class LandingPage extends Component {
                             <li>
                                 <GroupLink
                                     count={0}
-                                    href="/algorithms"
-                                    name="My algorithms" // <T k="nav.my-algorithms.title" />
+                                    href="/projects"
+                                    name="My projects" // <T k="nav.my-projects.title" />
                                 />
                             </li>
                             <li>
                                 <GroupLink
                                     count={7}
-                                    href="/algorithms"
+                                    href="/projects"
                                     name="Shared with me" // <T k="nav.shared-with-me.title" />
                                 />
                             </li>
@@ -46,14 +46,14 @@ class LandingPage extends Component {
                             <li>
                                 <GroupLink
                                     count={72}
-                                    href="/algorithms/group-1"
+                                    href="/projects/group-1"
                                     name="Team 1"
                                 />
                             </li>
                             <li>
                                 <GroupLink
                                     count={2147483647}
-                                    href="/algorithms/group-2"
+                                    href="/projects/group-2"
                                     name="Team 👻 tests the system by putting in a long name"
                                 />
                             </li>

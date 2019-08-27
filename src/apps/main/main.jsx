@@ -19,7 +19,7 @@ class AlgoneerMain extends PureComponent {
                 </header>
                 <div
                     style={{
-                        width: '912px',
+                        maxWidth: '912px',
                         margin: 'auto',
                     }}
                 >

@@ -41,6 +41,10 @@ export default class BaseApi {
             this.storage.setItem('access-token', value);
     }
 
+    get baseUrl() {
+        return this.settings.get(['algonautUrl']);
+    }
+
     url(url){
         return this.baseUrl+'/'+this.version+url;
     }

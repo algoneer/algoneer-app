@@ -40,13 +40,14 @@ const UserDropdown = ({user}) => {
                     { 'user-dropdown__dropdown--closed': open },
                 )}
             >
-                <span className="user-dropdown__dropdown-item">Logged in as {user.user.email}</span>
-                <hr />
+                <span className="user-dropdown__dropdown-item user-dropdown__dropdown-item--last-of-category">
+                    Logged in as {user.user.email}
+                </span>
                 <ul>
                     <li className="user-dropdown__dropdown-item">
                         <A className="user-dropdown__dropdown-item-link" href="/settings">Settings</A>
                     </li>
-                    <li className="user-dropdown__dropdown-item">
+                    <li className="user-dropdown__dropdown-item user-dropdown__dropdown-item--last-of-category">
                         <A className="user-dropdown__dropdown-item-link" href="/help">Help</A>
                     </li>
                     <li className="user-dropdown__dropdown-item">

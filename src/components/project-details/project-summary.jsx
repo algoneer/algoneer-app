@@ -3,22 +3,22 @@ import PropTypes from 'prop-types';
 
 import HoveringBox from '../common/hovering-box/hovering-box.jsx';
 
-import './algorithm-summary.scss';
+import './project-summary.scss';
 
 
-const AlgorithmSummary = ({ description, title }) => (
+const ProjectSummary = ({ description, title }) => (
     <HoveringBox>
-        <h1 className="algorithm-summary__title">{ title }</h1>
+        <h1 className="project-summary__title">{ title }</h1>
         <span>passed</span>
-        <div className="algorithm-summary__description">
+        <div className="project-summary__description">
             { description }
         </div>
     </HoveringBox>
 );
 
-AlgorithmSummary.propTypes = {
+ProjectSummary.propTypes = {
     description: PropTypes.node,
     title: PropTypes.node.isRequired,
 };
 
-export default AlgorithmSummary;
+export default ProjectSummary;
