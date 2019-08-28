@@ -118,7 +118,7 @@ export default class BaseApi {
             if (this.settings.get('env') === 'development'){
                 // we slow down all API requests in dev mode, which makes it
                 // easier to develop consistent state handling and see glitches
-                setTimeout(cb, 1000);
+                cb();
             } else {
                 cb();
             }

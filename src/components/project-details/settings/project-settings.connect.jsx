@@ -1,9 +1,10 @@
 import React from 'react';
 import ProjectSettings from './project-settings.jsx';
 
-const connect = () => (
+const connect = ({id}) => (
     <ProjectSettings
         title={'This is the title.'}
+        id={id}
         description={'This is the description'}
         onDelete={() => {}}
         onSave={() => { }}

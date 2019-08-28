@@ -1,6 +1,6 @@
-# 7s-ui - Example Application
+# Algoneer Front-End
 
-This repository contains an example application showing how to use the 7s-ui toolkit.
+A webapp to easily view your findings when analyzing algorithms with Algoneer.
 
 ## Installation
 
@@ -32,14 +32,9 @@ the submodule will be in a detached head state.
 
 To build the web application, run
 
-    # development version with test settings (i.e. mocked APIs):
+    # development version with mocked APIs:
+    npm run-script make-web-dev-test
+    # development version with APIs on localhost:
     npm run-script make-web-dev-test
     # production version:
     npm run-script make-web
-
-To build the desktop application, run
-
-    # development version:
-    npm run-script make-desktop-dev-text
-    # production version:
-    npm run-script make-desktop

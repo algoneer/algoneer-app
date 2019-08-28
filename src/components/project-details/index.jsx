@@ -1,20 +1,30 @@
-import React, { Fragment, PureComponent } from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
+import { withActions } from '7s/components/store';
+import WithLoader from '7s/components/with_loader';
+
 import Breadcrumbs from '../common/breadcrumbs/breadcrumbs.jsx';
 import HoveringBox from '../common/hovering-box/hovering-box.jsx';
 
 import HoveringSelect from './hovering-select.jsx';
+import ProjectSettings from './settings/project-settings.connect.jsx';
 import ProjectSummary from './project-summary.jsx';
 
 import './index.scss';
 
 
-class ProjectDetailsPage extends PureComponent {
-    renderTheCat(mouse) {
-        return <li mouse={mouse} />;
+class ProjectDetailsPage extends React.Component {
+    constructor(props, context) {
+        super(props, context);
+        this.loadProject();
     }
 
-    render() {
+    loadProject() {
+        this.props.projectDetailsActions.getProjectDetails(this.props.id);
+    }
+
+    renderLoaded() {
+        console.dir(this.props.projectDetails.data);
         return (
             <Fragment>
                 <Breadcrumbs
@@ -26,25 +36,47 @@ class ProjectDetailsPage extends PureComponent {
                 />
                 <div style={{ margin: '32px 0' }}>
                     <ProjectSummary
-                        title="Test Test"
-                        description="Description Description Description Description Description Description Description Description Description Description Description Description"
+                        description={this.props.projectDetails.data.description}
+                        id={this.props.id}
+                        title={this.props.projectDetails.data.name}
                     />
                 </div>
-                <div style={{ margin: '32px 0' }}>
-                    <HoveringBox><HoveringSelect label="Model type" /></HoveringBox>
-                    <HoveringBox><HoveringSelect label="Model version" /></HoveringBox>
-                    <HoveringBox><HoveringSelect label="Dataset" /></HoveringBox>
-                </div>
-                <HoveringBox>
-                    Some cool content
-                </HoveringBox>
+                {this.props.view === 'tests' ? (
+                    <Fragment>
+                        <div style={{ margin: '32px 0' }}>
+                            <HoveringBox><HoveringSelect label="Model type" /></HoveringBox>
+                            <HoveringBox><HoveringSelect label="Model version" /></HoveringBox>
+                            <HoveringBox><HoveringSelect label="Dataset" /></HoveringBox>
+                        </div>
+                        <HoveringBox>
+                            Some cool content
+                        </HoveringBox>
+                    </Fragment>
+                ) : (
+                    <div style={{ margin: '32px 0' }}>
+                        <ProjectSettings id={this.props.id} />
+                    </div>
+                )}
             </Fragment>
         );
     }
+
+    render() {
+        return <WithLoader
+            resources={[this.props.projectDetails]}
+            renderLoaded={() => this.renderLoaded()} />;
+    }
 }
+
+ProjectDetailsPage.defaultProps = {
+    view: 'tests',
+};
 
 ProjectDetailsPage.propTypes = {
     id: PropTypes.string.isRequired,
+    projectDetails: PropTypes.object.isRequired,
+    projectDetailsActions: PropTypes.object.isRequired,
+    view: PropTypes.oneOf(['tests', 'settings']),
 };
 
-export default ProjectDetailsPage;
+export default withActions(ProjectDetailsPage, ['projectDetails']);
