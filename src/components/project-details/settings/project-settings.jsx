@@ -1,13 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { A } from '7s/components';
 
 import HoveringBox from '../../common/hovering-box/hovering-box.jsx';
+import LabeledInput from '../../common/labeled-input/labeled-input.jsx';
 
 //import './project-settings.scss';
 
 
 const AlgorithmDetailsSettings = ({
     description,
+    id,
     title,
     onDelete,
     onSave,
@@ -16,8 +19,16 @@ const AlgorithmDetailsSettings = ({
 }) => (
     <HoveringBox>
         <form>
-            <input value={title} onChange={onUpdateTitle} />
-            <input value={description} onChange={onUpdateDescription} />
+            <LabeledInput
+                label="Project title"
+                value={title}
+                onChange={onUpdateTitle}
+            />
+            <LabeledInput
+                label="Project description"
+                value={description}
+                onChange={onUpdateDescription}
+            />
             <button
                 type="submit"
                 onClick={onSave}
@@ -25,6 +36,9 @@ const AlgorithmDetailsSettings = ({
                 Save
             </button>
         </form>
+        <A href={`/projects/${id}`}>
+            Back to the tests
+        </A>
         <button
             onClick={onDelete}
         >
@@ -35,6 +49,7 @@ const AlgorithmDetailsSettings = ({
 
 AlgorithmDetailsSettings.propTypes = {
     description: PropTypes.string.isRequired,
+    id: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     onDelete: PropTypes.func.isRequired,
     onSave: PropTypes.func.isRequired,

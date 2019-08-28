@@ -45,10 +45,17 @@ const UserDropdown = ({user}) => {
                 </span>
                 <ul>
                     <li className="user-dropdown__dropdown-item">
-                        <A className="user-dropdown__dropdown-item-link" href="/settings">Settings</A>
+                        <a
+                            className="user-dropdown__dropdown-item-link"
+                            href="https://docs.algoneer.org/"
+                            rel="noopener noreferrer"
+                            target="_blank"
+                        >
+                            Documentation
+                        </a>
                     </li>
                     <li className="user-dropdown__dropdown-item user-dropdown__dropdown-item--last-of-category">
-                        <A className="user-dropdown__dropdown-item-link" href="/help">Help</A>
+                        <A className="user-dropdown__dropdown-item-link" href="/settings">Settings</A>
                     </li>
                     <li className="user-dropdown__dropdown-item">
                         <A className="user-dropdown__dropdown-item-link" href="/logout">Sign out</A>

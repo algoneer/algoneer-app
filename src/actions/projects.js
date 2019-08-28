@@ -23,8 +23,8 @@ export default class Projects extends Base {
             this.set({ status: 'loading' });
         return this.handle(
             this.api.getProjects(),
-            (data) => {
-                this.update({ data: data.data, status: 'loaded' });
+            (response) => {
+                this.update({ data: response.data, status: 'loaded' });
             },
             (error) => {
                 this.update({ status: 'failed', error: error });

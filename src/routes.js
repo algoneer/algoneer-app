@@ -29,12 +29,26 @@ const routes = new Map([
     [
         'project-details',
         {
-            url: '/projects/([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})',
+            url: '/projects/([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})/?',
             handler: (id) => ({
                 title: 'Project Details',
                 component: ProjectDetailsPage,
                 props: {
                     id,
+                },
+            }),
+        },
+    ],
+    [
+        'project-details-settings',
+        {
+            url: '/projects/([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})/(settings)',
+            handler: (id, view) => ({
+                title: 'Project Details',
+                component: ProjectDetailsPage,
+                props: {
+                    id,
+                    view,
                 },
             }),
         },

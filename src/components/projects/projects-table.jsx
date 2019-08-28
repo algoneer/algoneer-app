@@ -28,7 +28,7 @@ class ProjectsTable extends PureComponent {
                                     {project.name}
                                 </A>
                             </td>
-                            <td>No idea, srsly</td>
+                            <td>You</td>
                             <td>
                                 <time dateTime={format(new Date(project['created_at']), 'yyyy-MM-dd')}>
                                     {format(new Date(project['created_at']), dateFormat)}

@@ -8,4 +8,11 @@ export default class ProjectsApi extends BaseApi {
             method: 'GET',
         });
     }
+
+    getProject(id) {
+        return this.authenticatedRequest({
+            url: `projects/${id}`,
+            method: 'GET',
+        });
+    }
 }
