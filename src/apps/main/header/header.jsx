@@ -1,9 +1,9 @@
 import React, {PureComponent} from 'react';
 import { A } from '7s/components';
 
-import UserDropdown from './user-dropdown.jsx';
-import NotificationBell from './notification-bell/notification-bell.jsx';
-import RoundedInput from '../../../components/common/rounded-input/rounded-input.jsx';
+import UserDropdown from './user-dropdown/user-dropdown.jsx';
+//import NotificationBell from './notification-bell/notification-bell.jsx';
+//import Search from './search/search.jsx';
 
 import logo from './logo.svg';
 import './header.scss';
@@ -23,28 +23,18 @@ const Logo = () => {
     );
 };
 
-const Search = () => {
-    return (
-        <form>
-            <RoundedInput
-                type="search"
-                disabled
-                placeholder="Search"
-            />
-        </form>
-    );
-};
 
-const NewAlgorithmButton = () => {
-    return (
-        <A
-            href="/projects/new"
-            className="header__new-project-button"
-        >
-            New project
-        </A>
-    );
-};
+
+// const NewAlgorithmButton = () => {
+//     return (
+//         <A
+//             href="/projects/new"
+//             className="header__new-project-button"
+//         >
+//             New project
+//         </A>
+//     );
+// };
 
 class Header extends PureComponent {
     render(){
@@ -56,6 +46,7 @@ class Header extends PureComponent {
                 <span className="header__logo">
                     <Logo />
                 </span>
+                {/*
                 <span className="header__center">
                     <span>
                         <Search />
@@ -64,8 +55,9 @@ class Header extends PureComponent {
                         <NewAlgorithmButton />
                     </span>
                 </span>
+                */}
                 <span className="header__button-area">
-                    <NotificationBell notificationCount={2} />
+                    {/*<NotificationBell notificationCount={2} />*/}
                     <UserDropdown />
                 </span>
             </nav>
