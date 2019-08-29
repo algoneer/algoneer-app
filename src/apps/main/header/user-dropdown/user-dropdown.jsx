@@ -3,6 +3,7 @@ import classnames from 'classnames';
 import { A, withActions } from '7s/components';
 
 import placeholder from './avatar-placeholder.png';
+import polygonVector from './polygon.svg';
 import './user-dropdown.scss';
 
 let id = 0;
@@ -12,7 +13,7 @@ function uniqueId() {
 }
 
 const UserDropdown = ({user}) => {
-    const [open, setOpen] = useState(true);
+    const [open, setOpen] = useState(false);
     const [toggleId] = useState(uniqueId());
     const [dropdownId] = useState(uniqueId());
     return (
@@ -30,6 +31,13 @@ const UserDropdown = ({user}) => {
                     className="user-dropdown__image"
                     src={placeholder}
                 />
+                <svg
+                    className="user-dropdown__polygon"
+                    xmlns="http://www.w3.org/2000/svg"
+                    xmlnsXlink="http://www.w3.org/1999/xlink"
+                >
+                    <image height="100%" width="100%" xlinkHref={polygonVector} />
+                </svg>
             </button>
             <div
                 id={dropdownId}
@@ -37,7 +45,7 @@ const UserDropdown = ({user}) => {
                 aria-labelledby={toggleId}
                 className={classnames(
                     'user-dropdown__dropdown',
-                    { 'user-dropdown__dropdown--closed': open },
+                    { 'user-dropdown__dropdown--closed': !open },
                 )}
             >
                 <span className="user-dropdown__dropdown-item user-dropdown__dropdown-item--last-of-category">
