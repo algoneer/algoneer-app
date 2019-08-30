@@ -6,9 +6,9 @@ import WithLoader from '7s/components/with_loader';
 import Breadcrumbs from '../common/breadcrumbs/breadcrumbs.jsx';
 import HoveringBox from '../common/hovering-box/hovering-box.jsx';
 
-import HoveringSelect from './hovering-select.jsx';
 import ProjectSettings from './settings/project-settings.connect.jsx';
 import ProjectSummary from './project-summary.jsx';
+import Selects from './selects.jsx';
 import Graphs from './graphs/graphs.jsx';
 
 import './index.scss';
@@ -34,29 +34,27 @@ class ProjectDetailsPage extends React.Component {
                         { name: 'Current project', url: `/projects/${this.props.id}`, selected: true },
                     ]}
                 />
-                <div style={{ margin: '32px 0' }}>
+                <aside style={{ margin: '32px 0' }}>
                     <ProjectSummary
                         description={this.props.projectDetails.data.description}
                         id={this.props.id}
                         title={this.props.projectDetails.data.name}
                     />
-                </div>
-                {this.props.view === 'tests' ? (
-                    <Fragment>
-                        <div style={{ margin: '32px 0' }}>
-                            <HoveringBox><HoveringSelect label="Model type" /></HoveringBox>
-                            <HoveringBox><HoveringSelect label="Model version" /></HoveringBox>
-                            <HoveringBox><HoveringSelect label="Dataset" /></HoveringBox>
-                        </div>
-                        <HoveringBox>
-                            <Graphs />
-                        </HoveringBox>
-                    </Fragment>
-                ) : (
-                    <div style={{ margin: '32px 0' }}>
+                </aside>
+                <main style={{ margin: '32px 0' }}>
+                    {this.props.view === 'tests' ? (
+                        <Fragment>
+                            <div style={{ margin: '32px 0' }}>
+                                <Selects />
+                            </div>
+                            <HoveringBox>
+                                <Graphs />
+                            </HoveringBox>
+                        </Fragment>
+                    ) : (
                         <ProjectSettings id={this.props.id} />
-                    </div>
-                )}
+                    )}
+                </main>
             </Fragment>
         );
     }

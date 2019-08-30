@@ -30,16 +30,39 @@ import {
     findKey,
 } from 'lodash';
 import colors from '../color-set';
+import invLinkFunctions from '../inv-link-functions.js';
 
 class AdditiveForceArrayVisualizer extends React.Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         window.lastAdditiveForceArrayVisualizer = this;
         this.topOffset = 28;
         this.leftOffset = 80;
         this.height = 350;
         this.effectFormat = format('.2');
         this.redraw = debounce(() => this.draw(), 200);
+        this.state = {
+            invLinkFunction: AdditiveForceArrayVisualizer.getInvLinkFunction(this.props),
+        };
+    }
+
+    static getInvLinkFunction({link, baseValue}) {
+        if (!invLinkFunctions.hasOwnProperty(link)) {
+            console.error('ERROR: Unrecognized link function: ', link);
+            link = 'identity';
+        }
+        return invLinkFunctions[link]({baseValue});
+    }
+
+    static getDerivedStateFromProps(props, state) {
+        if (props.baseValue !== state.baseValue || props.link !== state.link) {
+            return {
+                baseValue: props.baseValue,
+                link: props.link,
+                invLinkFunction: AdditiveForceArrayVisualizer.getInvLinkFunction(props),
+            }
+        }
+        return null;
     }
 
     componentDidMount() {
@@ -99,7 +122,7 @@ class AdditiveForceArrayVisualizer extends React.Component {
         let plot_colors = undefined;
         if (typeof this.props.plot_cmap === 'string') {
             if (!(this.props.plot_cmap in colors.colors)) {
-                console.log('Invalid color map name, reverting to default.');
+                console.warn('Invalid color map name, reverting to default.');
                 plot_colors = colors.colors.RdBu;
             }
             else {
@@ -145,7 +168,7 @@ class AdditiveForceArrayVisualizer extends React.Component {
             .scale(this.yscale)
             .tickSizeInner(4)
             .tickSizeOuter(0)
-            .tickFormat(d => this.ytickFormat(this.invLinkFunction(d)))
+            .tickFormat(d => this.ytickFormat(this.state.invLinkFunction(d)))
             .tickPadding(2);
 
         this.xlabel.node().onchange = () => this.internalDraw();
@@ -224,11 +247,11 @@ class AdditiveForceArrayVisualizer extends React.Component {
             this.hovery
                 .attr('x', this.leftOffset - 6)
                 .attr('y', nearestExp.joinPointy)
-                .text(this.ytickFormat(this.invLinkFunction(nearestExp.joinPoint)));
+                .text(this.ytickFormat(this.state.invLinkFunction(nearestExp.joinPoint)));
             this.hoveryOutline
                 .attr('x', this.leftOffset - 6)
                 .attr('y', nearestExp.joinPointy)
-                .text(this.ytickFormat(this.invLinkFunction(nearestExp.joinPoint)));
+                .text(this.ytickFormat(this.state.invLinkFunction(nearestExp.joinPoint)));
 
             const P = this.props.featureNames.length;
 
@@ -380,7 +403,7 @@ class AdditiveForceArrayVisualizer extends React.Component {
             keys(posDefinedFeatures),
             i => -(posDefinedFeatures[i] + negDefinedFeatures[i])
         );
-        console.log('found ', this.usedFeatures.length, ' used features');
+        //console.log('found ', this.usedFeatures.length, ' used features');
 
         this.posOrderedFeatures = sortBy(
             this.usedFeatures,
@@ -553,17 +576,6 @@ class AdditiveForceArrayVisualizer extends React.Component {
             this.currNegOrderedFeatures = [ind];
         }
         this.currExplanations = explanations;
-
-        // determine the link function
-        if (this.props.link === 'identity') {
-            // assume all links are the same
-            this.invLinkFunction = x => this.props.baseValue + x;
-        } else if (this.props.link === 'logit') {
-            this.invLinkFunction = x =>
-                1 / (1 + Math.exp(-(this.props.baseValue + x))); // logistic is inverse of logit
-        } else {
-            console.log('ERROR: Unrecognized link function: ', this.props.link);
-        }
 
         this.predValues = map(explanations, e =>
             sum(map(e.features, x => x.effect))

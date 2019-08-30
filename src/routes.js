@@ -15,14 +15,14 @@ const routes = new Map([
     [
         'projects',
         {
-            url: '/projects',
+            url: '/projects/?',
             handler: () => ({ title: 'Projects', component: ProjectsPage }),
         },
     ],
     [
         'new-project',
         {
-            url: '/projects/new',
+            url: '/projects/new/?',
             handler: () => ({ title: 'New project', component: NewProjectPage }),
         },
     ],
@@ -42,7 +42,7 @@ const routes = new Map([
     [
         'project-details-settings',
         {
-            url: '/projects/([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})/(settings)',
+            url: '/projects/([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})/(settings)/?',
             handler: (id, view) => ({
                 title: 'Project Details',
                 component: ProjectDetailsPage,
@@ -56,7 +56,7 @@ const routes = new Map([
     [
         'settings',
         {
-            url: '/settings',
+            url: '/settings/?',
             handler: () => ({ title: 'User Settings', component: UserSettingsPage }),
         },
     ],

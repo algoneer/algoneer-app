@@ -24,7 +24,6 @@ const Logo = () => {
 };
 
 
-
 // const NewAlgorithmButton = () => {
 //     return (
 //         <A

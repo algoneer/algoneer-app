@@ -13,42 +13,44 @@ class NewAlgorithmPage extends PureComponent {
                         { name: 'Create project', url: '/projects/new', selected: true },
                     ]}
                 />
-                <SectionBox>
-                    <h1><T k="nav.create-project.title" /></h1>
-                    <form>
-                        <p>
-                            <label>
-                                <T k="projects.terms.owner" />
-                                <select name="owner" disabled value="myself">
-                                    <option value="myself">myself</option>
-                                </select>
-                            </label>
-                            <label>
-                                <T k="projects.terms.name" />
-                                <input name="name" type="text" required />
-                            </label>
-                        </p>
-                        <p>
-                            <label>
-                                <T k="projects.terms.type" />
-                                <input type="text" required />
-                            </label>
-                        </p>
-                        <p>
-                            <label>
-                                <T k="projects.terms.description" /> (optional)
-                                <textarea type="text" />
-                            </label>
-                        </p>
-                        <p>
-                            <button
-                                type="submit"
-                            >
-                                Create
-                            </button>
-                        </p>
-                    </form>
-                </SectionBox>
+                <main style={{ margin: '32px 0' }}>
+                    <SectionBox>
+                        <h1><T k="nav.create-project.title" /></h1>
+                        <form>
+                            <p>
+                                <label>
+                                    <T k="projects.terms.owner" />
+                                    <select name="owner" disabled value="myself">
+                                        <option value="myself">myself</option>
+                                    </select>
+                                </label>
+                                <label>
+                                    <T k="projects.terms.name" />
+                                    <input name="name" type="text" required />
+                                </label>
+                            </p>
+                            <p>
+                                <label>
+                                    <T k="projects.terms.type" />
+                                    <input type="text" required />
+                                </label>
+                            </p>
+                            <p>
+                                <label>
+                                    <T k="projects.terms.description" /> (optional)
+                                    <textarea type="text" />
+                                </label>
+                            </p>
+                            <p>
+                                <button
+                                    type="submit"
+                                >
+                                    Create
+                                </button>
+                            </p>
+                        </form>
+                    </SectionBox>
+                </main>
             </Fragment>
         );
     }

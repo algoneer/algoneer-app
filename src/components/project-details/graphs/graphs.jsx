@@ -39,7 +39,9 @@ class Graphs extends React.Component {
                     })}
                 />
                 {this.state.slice && (
-                    <AdditiveForceVisualizer {...this.state.slice} />
+                    <div> {/* Prevents the visualizer from overflowing. */}
+                        <AdditiveForceVisualizer {...this.state.slice} />
+                    </div>
                 )}
             </Fragment>
         );

@@ -89,7 +89,7 @@ class AdditiveForceVisualizer extends React.Component {
         let plot_colors = undefined;
         if (typeof this.props.plot_cmap === 'string') {
             if (!(this.props.plot_cmap in colors.colors)) {
-                console.log('Invalid color map name, reverting to default.');
+                console.warn('Invalid color map name, reverting to default.');
                 plot_colors = colors.colors.RdBu;
             }
             else {
@@ -171,7 +171,7 @@ class AdditiveForceVisualizer extends React.Component {
             this.invLinkFunction = x =>
                 1 / (1 + Math.exp(-(this.props.baseValue + x))); // logistic is inverse of logit
         } else {
-            console.log('ERROR: Unrecognized link function: ', this.props.link);
+            console.warn('ERROR: Unrecognized link function: ', this.props.link);
         }
 
         // Set the dimensions of the plot
@@ -493,13 +493,6 @@ class AdditiveForceVisualizer extends React.Component {
             .attr('stroke-width', 6)
             .text(format(',.2f')(this.invLinkFunction(joinPoint - totalNegEffects)))
             .attr('opacity', 1);
-        console.log(
-            'joinPoint',
-            joinPoint,
-            scaleOffset,
-            topOffset,
-            totalNegEffects
-        );
         this.joinPointLabel
             .attr('x', scale(joinPoint) + scaleOffset)
             .attr('y', -5 + topOffset)

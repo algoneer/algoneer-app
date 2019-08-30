@@ -26,11 +26,13 @@ class AlgorithmsPage extends React.Component {
                         { name: 'My projects', url: '/projects', selected: true },
                     ]}
                 />
-                {(this.props.projects.data || []).length === 0 ? (
-                    <Empty />
-                ) : (
-                    <AlgorithmsTable projects={this.props.projects.data} />
-                )}
+                <main style={{ margin: '32px 0' }}>
+                    {(this.props.projects.data || []).length === 0 ? (
+                        <Empty />
+                    ) : (
+                        <AlgorithmsTable projects={this.props.projects.data} />
+                    )}
+                </main>
             </Fragment>
         );
     }
