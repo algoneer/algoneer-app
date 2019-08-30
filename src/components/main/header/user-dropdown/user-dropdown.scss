@@ -22,6 +22,7 @@
     }
     &__polygon {
         width: 10px;
+        height: 40px; // Check the polygon in Chrome, after removing this
     }
     &__dropdown {
         position: absolute;

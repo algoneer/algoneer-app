@@ -1,5 +1,5 @@
 import React from 'react';
-import RoundedInput from '../../../components/common/rounded-input/rounded-input.jsx';
+import RoundedInput from '../../../common/rounded-input/rounded-input.jsx';
 
 const Search = () => {
     return (

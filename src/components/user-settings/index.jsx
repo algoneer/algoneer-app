@@ -17,8 +17,8 @@ class UserSettingsPage extends Component {
                         { name: 'User settings', url: '/settings', selected: true },
                     ]}
                 />
-                <HoveringBox>
-                    <main>
+                <main style={{ margin: '32px 0' }}>
+                    <HoveringBox>
                         <h1 className="user-settings__page-heading">User settings</h1>
                         <form>
                             <h2 className="user-settings__section-heading">Change information</h2>
@@ -69,8 +69,8 @@ class UserSettingsPage extends Component {
                                 Save
                             </button>
                         </form>
-                    </main>
-                </HoveringBox>
+                    </HoveringBox>
+                </main>
             </Fragment>
         );
     }
