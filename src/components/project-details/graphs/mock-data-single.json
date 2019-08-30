@@ -1,0 +1,92 @@
+{
+    "outNames": [
+        "output value"
+    ],
+    "baseValue": 22.530323028564453,
+    "outValue": 24.130538940429688,
+    "link": "identity",
+    "featureNames": [
+        "CRIM",
+        "ZN",
+        "INDUS",
+        "CHAS",
+        "NOX",
+        "RM",
+        "AGE",
+        "DIS",
+        "RAD",
+        "TAX",
+        "PTRATIO",
+        "B",
+        "LSTAT"
+    ],
+    "features": {
+        "0": {
+            "effect": -0.5786368250846863,
+            "value": 0.00632,
+            "name": "CRIM"
+        },
+        "1": {
+            "effect": -0.049477096647024155,
+            "value": 18,
+            "name": "ZN"
+        },
+        "2": {
+            "effect": 0.08734039217233658,
+            "value": 2.31,
+            "name": "INDUS"
+        },
+        "3": {
+            "effect": -0.002723509445786476,
+            "value": 0,
+            "name": "CHAS"
+        },
+        "4": {
+            "effect": -0.8197038769721985,
+            "value": 0.538,
+            "name": "NOX"
+        },
+        "5": {
+            "effect": -1.7860864400863647,
+            "value": 6.575,
+            "name": "RM"
+        },
+        "6": {
+            "effect": -0.7392095327377319,
+            "value": 65.2,
+            "name": "AGE"
+        },
+        "7": {
+            "effect": -0.34057584404945374,
+            "value": 4.09,
+            "name": "DIS"
+        },
+        "8": {
+            "effect": -0.2513290047645569,
+            "value": 1,
+            "name": "RAD"
+        },
+        "9": {
+            "effect": -0.07351429760456085,
+            "value": 296,
+            "name": "TAX"
+        },
+        "10": {
+            "effect": 0.5563188195228577,
+            "value": 15.3,
+            "name": "PTRATIO"
+        },
+        "11": {
+            "effect": -0.02622264437377453,
+            "value": 396.9,
+            "name": "B"
+        },
+        "12": {
+            "effect": 5.624034881591797,
+            "value": 4.98,
+            "name": "LSTAT"
+        }
+    },
+    "plot_cmap": "RdBu",
+    "labelMargin": 20
+}

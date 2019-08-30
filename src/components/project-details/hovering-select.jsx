@@ -5,10 +5,10 @@ import PropTypes from 'prop-types';
 class HoveringSelect extends PureComponent {
     render() {
         return (
-            <span>
+            <div>
                 <label>{this.props.label}</label>
-                Trust me. Im a select input!
-            </span>
+                A select input!
+            </div>
         );
     }
 }

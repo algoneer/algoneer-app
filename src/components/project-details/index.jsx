@@ -9,6 +9,7 @@ import HoveringBox from '../common/hovering-box/hovering-box.jsx';
 import HoveringSelect from './hovering-select.jsx';
 import ProjectSettings from './settings/project-settings.connect.jsx';
 import ProjectSummary from './project-summary.jsx';
+import Graphs from './graphs/graphs.jsx';
 
 import './index.scss';
 
@@ -24,7 +25,6 @@ class ProjectDetailsPage extends React.Component {
     }
 
     renderLoaded() {
-        console.dir(this.props.projectDetails.data);
         return (
             <Fragment>
                 <Breadcrumbs
@@ -49,7 +49,7 @@ class ProjectDetailsPage extends React.Component {
                             <HoveringBox><HoveringSelect label="Dataset" /></HoveringBox>
                         </div>
                         <HoveringBox>
-                            Some cool content
+                            <Graphs />
                         </HoveringBox>
                     </Fragment>
                 ) : (
