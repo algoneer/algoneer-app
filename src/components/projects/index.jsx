@@ -18,7 +18,6 @@ class AlgorithmsPage extends React.Component {
     }
 
     renderLoaded() {
-        console.dir(this.props);
         return (
             <Fragment>
                 <Breadcrumbs

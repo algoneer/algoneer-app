@@ -10,7 +10,6 @@ const dateFormat = 'MMM d, yyyy';
 
 class ProjectsTable extends PureComponent {
     render() {
-        console.dir(this.props);
         return (
             <table className="table">
                 <thead>
@@ -44,6 +43,7 @@ class ProjectsTable extends PureComponent {
 
 ProjectsTable.propTypes = {
     projects: PropTypes.arrayOf(PropTypes.shape({
+        created_at: PropTypes.string.isRequired,
         id: PropTypes.string.isRequired,
         name: PropTypes.string.isRequired,
     })).isRequired,
