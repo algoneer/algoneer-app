@@ -3,12 +3,17 @@ import { T } from '7s/components';
 import Box from '../common/section-box/section-box.jsx';
 import Breadcrumbs from '../common/breadcrumbs/breadcrumbs.jsx';
 
-import GroupLink from './group-link.jsx';
+//import GroupLink from './group-link.jsx';
+import PersonalLinks from './personal-links.jsx';
 
 import './index.scss';
 
 
 class LandingPage extends Component {
+    static get blocksBackground() {
+        return true;
+    }
+
     render() {
         return (
             <div>
@@ -21,20 +26,7 @@ class LandingPage extends Component {
                     <Box primary>
                         <h2 className="landing-page__section-heading"><T k="nav.personal.title" /></h2>
                         <ul className="landing-page__group-list">
-                            <li>
-                                <GroupLink
-                                    count={0}
-                                    href="/projects"
-                                    name="My projects" // <T k="nav.my-projects.title" />
-                                />
-                            </li>
-                            {/* <li>
-                                <GroupLink
-                                    count={7}
-                                    href="/projects"
-                                    name="Shared with me" // <T k="nav.shared-with-me.title" />
-                                />
-                            </li> */}
+                            <PersonalLinks />
                         </ul>
                     </Box>
                 </div>

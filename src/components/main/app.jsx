@@ -39,6 +39,12 @@ class App extends Component {
         const { route } = this.props;
         const RouteComponent = route.component;
 
+        const showsBackground = document.documentElement.classList.contains('background-algoneer');
+        const shouldShowBackground = !RouteComponent.blocksBackground;
+        if (showsBackground !== shouldShowBackground) {
+            document.documentElement.classList.toggle('background-algoneer');
+        }
+
         if (RouteComponent.isSimple)
             return this.renderSimple(RouteComponent, route.props);
 
