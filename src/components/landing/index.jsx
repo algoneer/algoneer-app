@@ -28,18 +28,18 @@ class LandingPage extends Component {
                                     name="My projects" // <T k="nav.my-projects.title" />
                                 />
                             </li>
-                            <li>
+                            {/* <li>
                                 <GroupLink
                                     count={7}
                                     href="/projects"
                                     name="Shared with me" // <T k="nav.shared-with-me.title" />
                                 />
-                            </li>
+                            </li> */}
                         </ul>
                     </Box>
                 </div>
 
-                <div className="landing-page__section">
+                {/* <div className="landing-page__section">
                     <Box>
                         <h2 className="landing-page__section-heading"><T k="nav.organizational.title" /></h2>
                         <ul className="landing-page__group-list">
@@ -59,7 +59,7 @@ class LandingPage extends Component {
                             </li>
                         </ul>
                     </Box>
-                </div>
+                </div> */}
             </div>
         );
     }
