@@ -14,15 +14,16 @@ class Graphs extends React.Component {
     }
 
     loadSlice(id) {
-        const explanation = shapArrayProps.explanations[id];
+        const {data} = this.props
+        const explanation = data.explanations[id];
         return {
             'outNames': [
                 'output value',
             ],
-            'baseValue': shapArrayProps.baseValue,
+            'baseValue': data.baseValue,
             'outValue': explanation.outValue,
             'link': 'identity',
-            'featureNames': shapArrayProps.featureNames,
+            'featureNames': data.featureNames,
             'features': explanation.features,
             'plot_cmap': 'RdBu',
             'labelMargin': 20,
@@ -30,10 +31,11 @@ class Graphs extends React.Component {
     }
 
     render() {
+        const {data} = this.props
         return (
             <Fragment>
                 <AdditiveForceArrayVisualizer
-                    {...shapArrayProps}
+                    {...data}
                     onClickSlice={(value) => this.setState({
                         slice: this.loadSlice(value),
                     })}

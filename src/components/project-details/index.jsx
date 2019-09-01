@@ -17,14 +17,63 @@ import './index.scss';
 class ProjectDetailsPage extends React.Component {
     constructor(props, context) {
         super(props, context);
-        this.loadProject();
+        this.load(true);
     }
 
-    loadProject() {
-        this.props.projectDetailsActions.getProjectDetails(this.props.id);
+    load(initialize) {
+        const {
+            projectDetails,
+            algorithms,
+            datasets,
+            models,
+            datasetModelResults,
+            projectDetailsActions,
+            algorithmsActions,
+            datasetsActions,
+            modelsActions,
+            datasetModelResultsActions,
+            id } = this.props
+        if (initialize) {
+            projectDetailsActions.initialize();
+            algorithmsActions.initialize();
+            datasetsActions.initialize();
+            modelsActions.initialize();
+            datasetModelResultsActions.initialize();
+        }
+        if (projectDetails.status == 'initialized')
+            projectDetailsActions.getProjectDetails(id);
+        if (algorithms.status == 'initialized')
+            algorithmsActions.getAlgorithms(id);
+        if (datasets.status == 'initialized')
+            datasetsActions.getDatasets(id);
+        if (algorithms.status == 'loaded' && models.status == 'initialized'){
+            modelsActions.getModels(algorithms.data[0].id);
+        }
+        if (models.status == 'loaded' && datasets.status == 'loaded' && datasetModelResults.status == 'initialized'){
+            const datasetId = datasets.data[0].id;
+            const modelId = models.data[0].id;
+            datasetModelResultsActions.getResults(datasetId, modelId);
+        }
+        if (datasetModelResults.status == "loaded"){
+        }
+    }
+
+    getSHAPResult(){
+        const {datasetModelResults} = this.props
+        for(const result of datasetModelResults.data){
+            if (result.name == "shap.model")
+                return result
+        }
+
+    }
+
+    componentDidUpdate(){
+        this.load();
     }
 
     renderLoaded() {
+        const shapResult = this.getSHAPResult()
+        const shapData = shapResult.data.plot_data
         return (
             <Fragment>
                 <Breadcrumbs
@@ -48,20 +97,21 @@ class ProjectDetailsPage extends React.Component {
                                 <Selects />
                             </div>
                             <HoveringBox>
-                                <Graphs />
+                                <Graphs data={shapData}/>
                             </HoveringBox>
                         </Fragment>
                     ) : (
-                        <ProjectSettings id={this.props.id} />
-                    )}
+                            <ProjectSettings id={this.props.id} />
+                        )}
                 </main>
             </Fragment>
         );
     }
 
     render() {
+        const { projectDetails, algorithms, datasets, models, datasetModelResults } = this.props;
         return <WithLoader
-            resources={[this.props.projectDetails]}
+            resources={[projectDetails, algorithms, datasets, models, datasetModelResults]}
             renderLoaded={() => this.renderLoaded()} />;
     }
 }
@@ -77,4 +127,4 @@ ProjectDetailsPage.propTypes = {
     view: PropTypes.oneOf(['tests', 'settings']),
 };
 
-export default withActions(ProjectDetailsPage, ['projectDetails']);
+export default withActions(ProjectDetailsPage, ['projectDetails', 'algorithms', 'datasets', 'models', 'datasetModelResults']);

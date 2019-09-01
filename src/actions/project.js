@@ -7,9 +7,13 @@ export class ProjectDetails extends Base {
 
     constructor(store, settings, key) {
         super(store, settings, key);
-        this.set({ status: 'initialized' });
+        this.initialize();
         const ProjectsApi = settings.get(['apis', 'projects']);
         this.api = new ProjectsApi(settings, store);
+    }
+
+    initialize(){
+        this.set({ status: 'initialized' });
     }
 
     getProjectDetails(id) {

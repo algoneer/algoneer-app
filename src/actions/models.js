@@ -1,23 +1,22 @@
 import Base from '7s/actions/base';
-import { isThursday } from 'date-fns/esm';
 
-export default class Projects extends Base {
+export default class Models extends Base {
     static get defaultKey() {
-        return 'projects';
+        return 'models';
     }
 
     constructor(store, settings, key) {
         super(store, settings, key);
         this.initialize();
-        const ProjectsApi = settings.get(['apis', 'projects']);
-        this.api = new ProjectsApi(settings, store);
+        const AlgorithmsApi = settings.get(['apis', 'algorithms']);
+        this.api = new AlgorithmsApi(settings, store);
     }
 
     initialize(){
         this.set({ status: 'initialized' });
     }
 
-    getProjects() {
+    getModels(algorithmId) {
         const { status, updating } = this.get();
         if (status === 'loaded') {
             if (updating)
@@ -27,7 +26,7 @@ export default class Projects extends Base {
         else
             this.set({ status: 'loading' });
         return this.handle(
-            this.api.getProjects(),
+            this.api.getModels(algorithmId),
             (response) => {
                 this.update({ data: response.data, status: 'loaded' });
             },

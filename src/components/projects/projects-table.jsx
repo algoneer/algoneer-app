@@ -24,7 +24,7 @@ class ProjectsTable extends PureComponent {
                         <tr key={project.id}>
                             <td>
                                 <A href={`/projects/${project.id}`}>
-                                    {project.name}
+                                    {project.path}
                                 </A>
                             </td>
                             <td>You</td>
