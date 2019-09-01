@@ -1,9 +1,16 @@
 @import '~7s/scss/main.scss';
 @import './fonts.scss';
 
-#app {
+html {
     background: #fff;
-    background: linear-gradient(-62.5deg, #E3F6FF 44%, #fff 44%);
+    
+    &.background-algoneer {
+        background: linear-gradient(-62.5deg, #E3F6FF 44%, #fff 44%);
+    }
+}
+
+#app {
+    background: none;
 }
 
 .simple {
