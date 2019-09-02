@@ -2,9 +2,6 @@ import React, { Fragment } from 'react';
 import AdditiveForceArrayVisualizer from './shap/AdditiveForceArrayVisualizer.jsx';
 import AdditiveForceVisualizer from './shap/AdditiveForceVisualizer.jsx';
 
-import shapArrayProps from './mock-data-array.json';
-
-
 class Graphs extends React.Component {
     constructor(props, context) {
         super(props, context);
@@ -14,7 +11,7 @@ class Graphs extends React.Component {
     }
 
     loadSlice(id) {
-        const {data} = this.props
+        const {data} = this.props;
         const explanation = data.explanations[id];
         return {
             'outNames': [
@@ -31,7 +28,7 @@ class Graphs extends React.Component {
     }
 
     render() {
-        const {data} = this.props
+        const {data} = this.props;
         return (
             <Fragment>
                 <AdditiveForceArrayVisualizer

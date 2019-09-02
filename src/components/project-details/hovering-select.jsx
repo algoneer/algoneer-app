@@ -6,7 +6,8 @@ import './hovering-select.scss';
 
 class HoveringSelect extends PureComponent {
     render() {
-        const { label, onUpdateValue, ...props } = this.props;
+        const { label, onUpdateValue, currentValue, values,  ...props } = this.props;
+        const options = values.map(value => <option selected={currentValue===value[0]} key={value[0]} value={value[0]}>{value[1]}</option>);
         return (
             <span className="labeled-input">
                 <div className="labeled-input__label">
@@ -17,9 +18,7 @@ class HoveringSelect extends PureComponent {
                     onChange={event => onUpdateValue(event.target.value)}
                     {...props}
                 >
-                    <option>Test</option>
-                    <option>Test 2</option>
-                    <option>Test 3</option>
+                    {options}
                 </select>
             </span>
         );

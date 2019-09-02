@@ -1,7 +1,6 @@
 import React from 'react';
 //import PropTypes from 'prop-types';
 import { withActions } from '7s/components/store';
-
 import HoveringSelect from './hovering-select.jsx';
 import './selects.scss';
 
@@ -17,19 +16,31 @@ class ProjectDetailsSelects extends React.Component {
     }
 
     render() {
+        const {select, algorithms, models, datasets, algorithm, model, dataset} = this.props;
+
+        const algorithmValues = algorithms.map(algorithm => [algorithm.id, algorithm.name]);
+        const modelValues = models.map(model => [model.id, model.hash.substr(0, 10)]);
+        const datasetValues = datasets.map(dataset => [dataset.id, dataset.name]);
+
         return (
             <div className="project-details-selects">
                 <HoveringSelect
-                    label="Algorithm type"
-                    onUpdateValue={(x) => alert(x)}
+                    values={algorithmValues}
+                    currentValue={algorithm.id}
+                    label="Algorithm"
+                    onUpdateValue={(newAlgorithmId) => select(newAlgorithmId, model.id, dataset.id)}
                 />
                 <HoveringSelect
-                    label="Algorithm version"
-                    onUpdateValue={(x) => alert(x)}
+                    values={modelValues}
+                    label="Model"
+                    currentValue={model.id}
+                    onUpdateValue={(newModelId) => select(algorithm.id, newModelId, dataset.id)}
                 />
                 <HoveringSelect
+                    values={datasetValues}
                     label="Dataset"
-                    onUpdateValue={(x) => alert(x)}
+                    currentValue={dataset.id}
+                    onUpdateValue={(newDatasetId) => select(algorithm.id, model.id, newDatasetId)}
                 />
             </div>
         );

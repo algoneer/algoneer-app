@@ -1,5 +1,4 @@
 import Base from '7s/actions/base';
-import { isThursday } from 'date-fns/esm';
 
 export default class Projects extends Base {
     static get defaultKey() {
