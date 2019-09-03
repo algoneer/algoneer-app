@@ -1,4 +1,4 @@
-# Algoneer Front-End
+# Algoneer App
 
 A webapp to easily view your findings when analyzing algorithms with Algoneer.
 
