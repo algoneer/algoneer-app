@@ -116,7 +116,7 @@ let config = {
     output: {
         path: PUBLIC_DIR,
         filename: 'bundle.js',
-        publicPath: '/public',
+        publicPath: '/public/',
     },
     plugins: [
         ...copyPlugins,
@@ -149,7 +149,7 @@ if (APP_ENV === 'production') {
             contentBase: ['src/static', 'src/7s/static'],
 
             // match the output `publicPath`
-            publicPath: '/public',
+            publicPath: '/public/',
             //always render index.html if the document does not exist (we need this for correct routing)
             historyApiFallback: true,
 

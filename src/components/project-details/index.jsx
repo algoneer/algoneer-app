@@ -25,19 +25,16 @@ class ProjectDetailsPage extends React.Component {
         const {
             projectDetails,
             algorithms,
-            datasets,
             models,
             datasetModelResults,
             projectDetailsActions,
             algorithmsActions,
-            datasetsActions,
             modelsActions,
             datasetModelResultsActions,
             id } = this.props;
         if (initialize) {
             projectDetailsActions.initialize();
             algorithmsActions.initialize();
-            datasetsActions.initialize();
             modelsActions.initialize();
             datasetModelResultsActions.initialize();
         }
@@ -45,16 +42,13 @@ class ProjectDetailsPage extends React.Component {
             projectDetailsActions.getProjectDetails(id);
         if (algorithms.status === 'initialized')
             algorithmsActions.getAlgorithms(id);
-        if (datasets.status === 'initialized')
-            datasetsActions.getDatasets(id);
         if (algorithms.status === 'loaded' && models.status === 'initialized'){
             const algorithm = this.getAlgorithm();
             modelsActions.getModels(algorithm.id);
         }
-        if (models.status === 'loaded' && datasets.status === 'loaded' && datasetModelResults.status === 'initialized'){
-            const dataset = this.getDataset();
+        if (models.status === 'loaded' && datasetModelResults.status === 'initialized'){
             const model = this.getModel();
-            datasetModelResultsActions.getResults(dataset.id, model.id);
+            datasetModelResultsActions.getResults(model.dataset.id, model.id);
         }
     }
 
@@ -84,17 +78,12 @@ class ProjectDetailsPage extends React.Component {
         return models.data[0];
     }
 
-    getDataset(){
-        const {datasets} = this.props;
-        return datasets.data[0];
-    }
-
     componentDidUpdate(){
         this.load();
     }
 
     renderLoaded() {
-        const {projectDetails, algorithms, models, datasets, router} = this.props;
+        const {projectDetails, algorithms, models, router} = this.props;
         const shapResult = this.getSHAPResult();
         const shapData = shapResult.data.plot_data;
 
@@ -105,10 +94,9 @@ class ProjectDetailsPage extends React.Component {
                 return encodeURIComponent(k) + '=' + encodeURIComponent(params[k]);
             }).join('&');
 
-        const select = (algorithmId, modelId, datasetId) => {
+        const select = (algorithmId, modelId) => {
             params.algorithmId=algorithmId;
             params.modelId=modelId;
-            params.datasetId=datasetId;
             this.load(true);
             router.navigateToUrl(router.currentPath+'?'+encode(params));
         };
@@ -132,8 +120,8 @@ class ProjectDetailsPage extends React.Component {
                     {this.props.view === 'tests' ? (
                         <Fragment>
                             <div style={{ margin: '32px 0' }}>
-                                <Selects algorithm={this.getAlgorithm()} dataset={this.getDataset()} model={this.getModel()}
-                                    datasets={datasets.data} models={models.data} algorithms={algorithms.data} select={select}/>
+                                <Selects algorithm={this.getAlgorithm()} model={this.getModel()}
+                                    models={models.data} algorithms={algorithms.data} select={select}/>
                             </div>
                             <HoveringBox>
                                 <h2>Test Result: <strong>SHAP Values</strong></h2>
@@ -149,9 +137,9 @@ class ProjectDetailsPage extends React.Component {
     }
 
     render() {
-        const { projectDetails, algorithms, datasets, models, datasetModelResults } = this.props;
+        const { projectDetails, algorithms, models, datasetModelResults } = this.props;
         return <WithLoader
-            resources={[projectDetails, algorithms, datasets, models, datasetModelResults]}
+            resources={[projectDetails, algorithms, models, datasetModelResults]}
             renderLoaded={() => this.renderLoaded()} />;
     }
 }
@@ -167,4 +155,4 @@ ProjectDetailsPage.propTypes = {
     view: PropTypes.oneOf(['tests', 'settings']),
 };
 
-export default withActions(withRouter(ProjectDetailsPage), ['projectDetails', 'algorithms', 'datasets', 'models', 'datasetModelResults']);
+export default withActions(withRouter(ProjectDetailsPage), ['projectDetails', 'algorithms', 'models', 'datasetModelResults']);

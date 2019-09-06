@@ -16,11 +16,10 @@ class ProjectDetailsSelects extends React.Component {
     }
 
     render() {
-        const {select, algorithms, models, datasets, algorithm, model, dataset} = this.props;
+        const {select, algorithms, models, algorithm, model} = this.props;
 
         const algorithmValues = algorithms.map(algorithm => [algorithm.id, algorithm.name]);
         const modelValues = models.map(model => [model.id, model.hash.substr(0, 10)]);
-        const datasetValues = datasets.map(dataset => [dataset.id, dataset.name]);
 
         return (
             <div className="project-details-selects">
@@ -28,19 +27,13 @@ class ProjectDetailsSelects extends React.Component {
                     values={algorithmValues}
                     currentValue={algorithm.id}
                     label="Algorithm"
-                    onUpdateValue={(newAlgorithmId) => select(newAlgorithmId, model.id, dataset.id)}
+                    onUpdateValue={(newAlgorithmId) => select(newAlgorithmId, model.id)}
                 />
                 <HoveringSelect
                     values={modelValues}
                     label="Model"
                     currentValue={model.id}
-                    onUpdateValue={(newModelId) => select(algorithm.id, newModelId, dataset.id)}
-                />
-                <HoveringSelect
-                    values={datasetValues}
-                    label="Dataset"
-                    currentValue={dataset.id}
-                    onUpdateValue={(newDatasetId) => select(algorithm.id, model.id, newDatasetId)}
+                    onUpdateValue={(newModelId) => select(algorithm.id, newModelId)}
                 />
             </div>
         );
